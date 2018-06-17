@@ -1,8 +1,8 @@
 /*	****************************************************************************************
-	Algoritmos y Programación I - 75.02/95.11 - Curso Ing. Martín Cardozo
+	Algoritmos y ProgramaciÃ³n I - 75.02/95.11 - Curso Ing. MartÃ­n Cardozo
 	Archivo:     mp3reader.c
-	Descripcion: Código de ejemplo para mostrar los datos del encabezado de un archivo MP3
-	(c) Martín Cardozo
+	Descripcion: CÃ³digo de ejemplo para mostrar los datos del encabezado de un archivo MP3
+	(c) MartÃ­n Cardozo
 	**************************************************************************************** */
 
 
