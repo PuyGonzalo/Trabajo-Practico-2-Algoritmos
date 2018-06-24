@@ -79,7 +79,7 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
 
         for(i=0;i<argc;i++)
         {
-            if(!strcmp(argv[i],CMD_ARG_OUTPUT_PATH_FLAG)) 
+            if(!strcmp(argv[i],CMD_ARG_OUTPUT_FILE_FLAG)) 
                break;
         }
 
