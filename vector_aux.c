@@ -3,7 +3,7 @@
 #include <string.h>
 #include "vector.h"
 #include "types.h"
-#include "vector.h"
+
 
 status_t ADT_Vector_export_as_CSV (const ADT_vector_t * p, FILE * fo, char delimitter, status_t (*pf)(const void *, FILE *, char))
 {
