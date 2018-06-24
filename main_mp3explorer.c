@@ -49,12 +49,9 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
 	    if(!strcmp(argv[i],CMD_ARG_FORMAT_FLAG)) 
 	       break;
         }
-
-        if(i==argc) 
-           return ERROR_PROG_INVOCATION;
    
-        else if(!strcmp(argv[i+1],CMD_ARG_FORMAT_CSV)) 
-                setup->fmt=CSV;
+        if(!strcmp(argv[i+1],CMD_ARG_FORMAT_CSV)) 
+            setup->fmt=CSV;
 
 	else if(!strcmp(argv[i+1],CMD_ARG_FORMAT_XML)) 
                 setup->fmt=XML;
@@ -68,11 +65,8 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
                break;
         }
 
-	if(i==argc) 
-           return ERROR_PROG_INVOCATION;
-
-        else if(!strcmp(argv[i+1],CMD_ARG_SORT_BY_NAME)) 
-                setup->sort=NAME;
+        if(!strcmp(argv[i+1],CMD_ARG_SORT_BY_NAME)) 
+           setup->sort=NAME;
 
 	else if(!strcmp(argv[i+1],CMD_ARG_SORT_BY_ARTIST)) 
                 setup->sort=ARTIST;
@@ -88,9 +82,6 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
             if(!strcmp(argv[i],CMD_ARG_OUTPUT_PATH_FLAG)) 
                break;
         }
-
-        if(i==argc)
-           return ERROR_PROG_INVOCATION;
 
         if(argv[i+1]==NULL) 
            return ERROR_PROG_INVOCATION;
