@@ -22,7 +22,7 @@ typedef status_t (*Vector_printer_t)(const void *, FILE *);
 typedef void (*destructor_t)(void *);
 
 typedef struct{
-               void **data;
+               void **element;
                size_t size; 
                size_t alloc_size;
                destructor_t destructor;
