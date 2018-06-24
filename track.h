@@ -5,7 +5,7 @@ Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
 Alumno: Reigada, Maximiliano Daniel
 Archivo: mp3.h
-Descripción: Contiene prototipos de primitivas y TDA MP3.
+Descripción: Contiene prototipos de primitivas y TDA Track.
 ************************************************************************/
 
 
