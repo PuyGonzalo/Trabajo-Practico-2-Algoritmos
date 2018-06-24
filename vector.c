@@ -25,7 +25,7 @@ status_t ADT_Vector_new (ADT_Vector_t **p)
 	if((*p=(ADT_Vector_t *)malloc(sizeof(ADT_Vector_t)))==NULL)
            return ERROR_OUT_OF_MEMORY;
 
-	if(((*p)->data=(void **)malloc(ADT_VECTOR_INIT_CHOP*sizeof(void *)))==NULL)
+	if(((*p)->element=(void **)malloc(ADT_VECTOR_INIT_CHOP*sizeof(void *)))==NULL)
 	{
 	   free(*p);
 	   *p=NULL;
