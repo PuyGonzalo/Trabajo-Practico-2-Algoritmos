@@ -51,12 +51,12 @@ status_t ADT_Vector_delete (ADT_Vector_t **p)
 
         for(i=0; i<(*p)->size; i++)
         {
-            (*p)->destructor((*p)->data[i]); 
-            (*p)->data[i]=NULL;
+            (*p)->destructor((*p)->element[i]); 
+            (*p)->element[i]=NULL;
         }
 
-        free((*p)->data);
-	(*p)->data=NULL;
+        free((*p)->element);
+	(*p)->element=NULL;
 
         free(*p);
         *p=NULL;
@@ -82,7 +82,7 @@ status_t ADT_Vector_Set_destructor (ADT_Vector_t *p, destructor_t pf)
 
 
 /*******************Comienzo de función de adjunción de vector**********************/
-status_t ADT_Vector_append (ADT_Vector_t *p, void *new_data)
+status_t ADT_Vector_append (ADT_Vector_t *p, void *new_element)
 {
    void **aux;
    if(p==NULL) 
@@ -90,14 +90,14 @@ status_t ADT_Vector_append (ADT_Vector_t *p, void *new_data)
 
    if(p->size==p->alloc_size)
    {
-      if((aux=(void **)realloc(p->data,(p->alloc_size+ADT_VECTOR_INIT_CHOP)*sizeof(void*)))==NULL)
+      if((aux=(void **)realloc(p->element,(p->alloc_size+ADT_VECTOR_INIT_CHOP)*sizeof(void*)))==NULL)
          return ERROR_OUT_OF_MEMORY;
 
       p->alloc_size+=ADT_VECTOR_INIT_CHOP;
-      p->data=aux;
+      p->element=aux;
    }
 
-   p->data[(p->size)++] = new_data;
+   p->element[(p->size)++] = new_element;
 
    return OK;
 }
@@ -114,7 +114,7 @@ void * ADT_Vector_get_element (const ADT_Vector_t *p, size_t position)
 	if(position>p->size) 
            return NULL;
 
-        return p->data[position];
+        return p->element[position];
 }
 /***************Final de función de obtención de elemento****************/
 
@@ -139,7 +139,7 @@ status_t ADT_Vector_Print (ADT_Vector_t *v, FILE *fo)
 	   return ERROR_NULL_POINTER;
 
         for(i=0;i<v->size;i++)
-            if((st=v->printer(v->data[i], fo))!=OK) 
+            if((st=v->printer(v->element[i], fo))!=OK) 
                return st;
  
         return OK;
