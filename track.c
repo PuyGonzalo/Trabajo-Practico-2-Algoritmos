@@ -5,7 +5,7 @@ Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
 Alumno: Reigada, Maximiliano Daniel
 Archivo: mp3.c
-Descripción: Contiene funciones de manejo de TDA MP3.
+Descripción: Contiene funciones de manejo de TDA Track.
 ************************************************************************/
 
 #include <stdio.h>
