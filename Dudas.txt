@@ -1,2 +1,3 @@
 Dudas para Martin:
 1- El archivo de salida tiene que ser fijo ?
+2- Validar fseek(), fread(), ftell() en get_mp3_header ?
