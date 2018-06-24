@@ -4,7 +4,7 @@ Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
 Alumno: Reigada, Maximiliano Daniel
-Archivo: mp3.h
+Archivo: track.h
 Descripción: Contiene prototipos de primitivas y TDA Track.
 ************************************************************************/
 
