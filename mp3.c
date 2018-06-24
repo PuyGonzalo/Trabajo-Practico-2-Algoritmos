@@ -5,6 +5,9 @@ char * get_mp3_header (FILE * f)
 {
 	size_t length;
 	char header [MP3_HEADER_SIZE];
+	
+	if( f == NULL)
+		return ERROR_NULL_POINTER;
 
 	fseek(f, 0, SEEK_END);
 
