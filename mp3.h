@@ -3,6 +3,11 @@
 
 #include <stdio.h>
 
+typedef enum  {
+	OK=0,
+	ERROR_NULL_POINTER=1
+} status_t;
+
 #define MP3_HEADER_SIZE		128
 
 
@@ -27,6 +32,7 @@
 #define LEXEM_START_GENRE  127
 #define LEXEM_SPAN_GENRE     1
 
-char * get_mp3_header (FILE * f);
+status_t get_mp3_header (FILE * f, char ** header);
+
 
 #endif
