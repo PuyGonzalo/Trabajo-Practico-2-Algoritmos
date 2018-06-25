@@ -7,10 +7,10 @@ Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: mp3.c
 Descripción: Contiene funciones referidas a archivos mp3.
 ************************************************************************/
+#include <stdio.h>
+#include "types.h"
 
-
-
- status_t get_mp3_header (FILE *f,char *header)
+ status_t get_mp3_header (FILE *f,char *header) /* PASARLE CHAR CON LONGITUD DEFINIDA */
 {
 	size_t length;
 
