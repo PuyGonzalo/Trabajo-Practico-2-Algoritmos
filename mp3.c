@@ -20,6 +20,9 @@ status_t load_track_mp3 (FILE * f, ADT_Vector_t * p)
 	char header[MP3_HEADER_SIZE];
 	ADT_Track_t  track;
 	status_t st;
+	
+	if(f == NULL || p == NULL)
+		return ERROR_NULL_POINTER;
 
 	if((st=get_mp3_header(f,header))!=OK)
 		return st;
