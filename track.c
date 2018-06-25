@@ -29,6 +29,7 @@ status_t ADT_Track_new(ADT_Track_t *track)
 	(*track).year=NULL;
 	(*track).comment=NULL;
 	(*track).genre=NULL;
+	(*track).tag=NULL;
 
 	return OK;
 }
@@ -268,7 +269,7 @@ status_t ADT_Track_set_comment(ADT_Track_t *track, string new_comment)
 
 
 /**********Comienzo de función de seteo de tag de Track***********/
-status_t ADT_Track_set_artist(ADT_Track_t *track, string new_tag)
+status_t ADT_Track_set_tag (ADT_Track_t *track, string new_tag)
 {
 	if(track==NULL || new_tag==NULL) 
            return ERROR_NULL_POINTER;
@@ -377,7 +378,7 @@ status_t ADT_Track_get_comment (ADT_Track_t *track, string *s)
 
 
 /**********Comienzo de función de obtención tag de Track***********/
-status_t ADT_Track_get_comment (ADT_Track_t *track, string *s)
+status_t ADT_Track_get_tag (ADT_Track_t *track, string *s)
 {
 	if(track==NULL || track->tag==NULL) 
    	   return ERROR_NULL_POINTER;
@@ -387,4 +388,4 @@ status_t ADT_Track_get_comment (ADT_Track_t *track, string *s)
 
   	return OK;
 }
-/**********Final de función de obtención de comentario de Track***********/
+/**********Final de función de obtención de tag de Track***********/
