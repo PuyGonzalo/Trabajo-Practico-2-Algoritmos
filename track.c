@@ -127,6 +127,24 @@ status_t ADT_Track_destroy_comment(ADT_Track_t *track)
 
 
 
+/**************Comienzo de función de destrucción de tag de Track*****************/
+status_t ADT_Track_destroy_tag (ADT_Track_t *)
+{
+	if(track==NULL) 
+	return ERROR_NULL_POINTER;
+
+	if((track->tag)!=NULL) 
+        {
+	   free(track->tag); 
+           track->tag=NULL;
+        }
+      
+        return OK;
+}
+/**************Final de función de destrucción de tag de Track*****************/
+	
+	
+
 /**************Comienzo de función de impresión de Track*****************/
 status_t ADT_Track_print(ADT_Track_t *track, FILE *fo)
 {
@@ -249,6 +267,21 @@ status_t ADT_Track_set_comment(ADT_Track_t *track, string new_comment)
 
 
 
+/**********Comienzo de función de seteo de tag de Track***********/
+status_t ADT_Track_set_artist(ADT_Track_t *track, string new_tag)
+{
+	if(track==NULL || new_tag==NULL) 
+           return ERROR_NULL_POINTER;
+
+	if((track->tag=strdupl(new_tag))==NULL) 
+           return ERROR_OUT_OF_MEMORY;
+
+	return OK;
+}
+/**********Final de función de seteo de tag de Track***********/
+
+
+
 /**********Comienzo de función de obtención de título de Track***********/
 status_t ADT_Track_get_title (ADT_Track_t *track, string *s)
 {
@@ -328,7 +361,6 @@ status_t ADT_Track_get_year (ADT_Track_t *track, string *s)
 
 
 
-
 /**********Comienzo de función de obtención comentario de Track***********/
 status_t ADT_Track_get_comment (ADT_Track_t *track, string *s)
 {
@@ -336,6 +368,21 @@ status_t ADT_Track_get_comment (ADT_Track_t *track, string *s)
    	   return ERROR_NULL_POINTER;
 
 	if((*s=strdupl(track->comment))==NULL) 
+  	   return ERROR_OUT_OF_MEMORY;
+
+  	return OK;
+}
+/**********Final de función de obtención de comentario de Track***********/
+
+
+
+/**********Comienzo de función de obtención tag de Track***********/
+status_t ADT_Track_get_comment (ADT_Track_t *track, string *s)
+{
+	if(track==NULL || track->tag==NULL) 
+   	   return ERROR_NULL_POINTER;
+
+	if((*s=strdupl(track->tag))==NULL) 
   	   return ERROR_OUT_OF_MEMORY;
 
   	return OK;
