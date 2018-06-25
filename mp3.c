@@ -27,3 +27,7 @@ Descripción: Contiene funciones referidas a archivos mp3.
 
 	return OK;
 }
+
+status_t get_fields_from_mp3_header(char *header,ADT_Track_t track)
+{	
+	
