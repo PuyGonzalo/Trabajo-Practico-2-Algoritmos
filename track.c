@@ -129,7 +129,7 @@ status_t ADT_Track_destroy_comment(ADT_Track_t *track)
 
 
 /**************Comienzo de función de destrucción de tag de Track*****************/
-status_t ADT_Track_destroy_tag (ADT_Track_t *)
+status_t ADT_Track_destroy_tag (ADT_Track_t *track)
 {
 	if(track==NULL) 
 	return ERROR_NULL_POINTER;
