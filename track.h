@@ -26,6 +26,7 @@ typedef struct{
                string year;
                string genre;
                string comment;
+               string tag;
                Track_printer_t printer;
               }ADT_Track_t;
 
@@ -38,6 +39,8 @@ status_t ADT_Track_destroy_genre (ADT_Track_t *);
 status_t ADT_Track_destroy_album (ADT_Track_t *);
 status_t ADT_Track_destroy_year (ADT_Track_t *);
 status_t ADT_Track_destroy_comment (ADT_Track_t *);
+status_t ADT_Track_destroy_tag (ADT_Track_t *);
+
 
 status_t ADT_Track_print (ADT_Track_t *,FILE *);
 status_t ADT_Track_set_printer (ADT_Track_t *, Track_printer_t );
@@ -48,6 +51,8 @@ status_t ADT_Track_set_genre (ADT_Track_t *, string);
 status_t ADT_Track_set_album (ADT_Track_t *, string);
 status_t ADT_Track_set_year (ADT_Track_t *, string);
 status_t ADT_Track_set_comment (ADT_Track_t *, string);
+status_t ADT_Track_set_tag (ADT_Track_t *, string);
+
 
 status_t ADT_Track_get_title (ADT_Track_t *, string *);
 status_t ADT_Track_get_artist (ADT_Track_t *, string *);
@@ -55,6 +60,7 @@ status_t ADT_Track_get_genre (ADT_Track_t *, string *s,const string *genres_dict
 status_t ADT_Track_get_album (ADT_Track_t *, string *);
 status_t ADT_Track_get_year (ADT_Track_t *, string *);
 status_t ADT_Track_get_comment (ADT_Track_t *, string *);
+status_t ADT_Track_get_tag (ADT_Track_t *, string *);
 /********************************PROTOTIPOS TDA MP3***********************************/
 
 #endif
