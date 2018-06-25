@@ -26,13 +26,13 @@ status_t load_track_mp3 (FILE * f, ADT_Vector_t * p)
 
 	if((st=set_fields_from_mp3_header(header, &track))!= OK)
 	{
-		ADT_Track_delete(track);
+		ADT_Track_delete(&track);
 		return st;
 	}
 
 	if((st=ADT_Vector_append(p, track))!=OK)
 	{
-		ADT_Track_delete(track);
+		ADT_Track_delete(&track);
 		return st;
 	}
 
