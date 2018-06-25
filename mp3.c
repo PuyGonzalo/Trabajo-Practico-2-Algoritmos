@@ -42,60 +42,44 @@ status_t set_fields_from_mp3_header (const char header[], ADT_Track_t * track)
 
 
 	memcpy(buf,header+LEXEM_START_TAG,LEXEM_SPAN_TAG);
-    buf[LEXEM_SPAN_TAG] = '\0';
-    if((st=ADT_Track_set_tag(track,buf)) != OK)
-    {
-    	ADT_Track_delete(track);
-    	return st;
-    }
+        buf[LEXEM_SPAN_TAG] = '\0';
+	if((st=ADT_Track_set_tag(track,buf)) != OK)    
+           return st;
+    
 
-    memcpy(buf,header+LEXEM_START_TITLE,LEXEM_SPAN_TITLE);
-    buf[LEXEM_SPAN_TITLE] = '\0';
-    if((st=ADT_Track_set_title(track,buf)) != OK)
-    {
-    	ADT_Track_delete(track);
-    	return st;
-    }
+	memcpy(buf,header+LEXEM_START_TITLE,LEXEM_SPAN_TITLE);
+	buf[LEXEM_SPAN_TITLE] = '\0';
+	if((st=ADT_Track_set_title(track,buf)) != OK)
+    	   return st;
+        
 
-    memcpy(buf,header+LEXEM_START_ARTIST,LEXEM_SPAN_ARTIST);
-    buf[LEXEM_SPAN_ARTIST] = '\0';
-    if((st=ADT_Track_set_artist(track,buf)) != OK)
-    {
-    	ADT_Track_delete(track);
-    	return st;
-    }
+    	memcpy(buf,header+LEXEM_START_ARTIST,LEXEM_SPAN_ARTIST);
+    	buf[LEXEM_SPAN_ARTIST] = '\0';
+   	if((st=ADT_Track_set_artist(track,buf)) != OK)
+	   return st;
+    
 
-    memcpy(buf,header+LEXEM_START_ALBUM,LEXEM_SPAN_ALBUM);
-    buf[LEXEM_SPAN_ALBUM] = '\0';
-    if((st=ADT_Track_set_album(track,buf)) != OK)
-    {
-    	ADT_Track_delete(track);
+        memcpy(buf,header+LEXEM_START_ALBUM,LEXEM_SPAN_ALBUM);
+	buf[LEXEM_SPAN_ALBUM] = '\0';
+	if((st=ADT_Track_set_album(track,buf)) != OK)
     	return st;
-    }
+    
 
-    memcpy(buf,header+LEXEM_START_YEAR,LEXEM_SPAN_YEAR);
-    buf[LEXEM_SPAN_YEAR] = '\0';
-    if((st=ADT_Track_set_year(track,buf)) != OK)
-    {
-    	ADT_Track_delete(track);
+	memcpy(buf,header+LEXEM_START_YEAR,LEXEM_SPAN_YEAR);
+	buf[LEXEM_SPAN_YEAR] = '\0';
+	if((st=ADT_Track_set_year(track,buf)) != OK)
     	return st;
-    }
 
-    memcpy(buf,header+LEXEM_START_COMMENT,LEXEM_SPAN_COMMENT);
-    buf[LEXEM_SPAN_COMMENT] = '\0';
-    if((st=ADT_Track_set_comment(track,buf)) != OK)
-    {
-    	ADT_Track_delete(track);
+	memcpy(buf,header+LEXEM_START_COMMENT,LEXEM_SPAN_COMMENT);
+    	buf[LEXEM_SPAN_COMMENT] = '\0';
+    	if((st=ADT_Track_set_comment(track,buf)) != OK)
     	return st;
-    }
+    
 
-    memcpy(buf,header+LEXEM_START_GENRE,LEXEM_SPAN_GENRE);
-    buf[LEXEM_SPAN_GENRE] = '\0';
-    if((st=ADT_Track_set_genre(track,buf)) != OK)
-    {
-    	ADT_Track_delete(track);
-    	return st;
-    }
+	memcpy(buf,header+LEXEM_START_GENRE,LEXEM_SPAN_GENRE);
+	buf[LEXEM_SPAN_GENRE] = '\0';	
+	if((st=ADT_Track_set_genre(track,buf)) != OK)
+       	return st;
 
-    return OK;
+	return OK;
 }
