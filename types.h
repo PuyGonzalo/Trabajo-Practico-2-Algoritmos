@@ -17,7 +17,10 @@ Descripción: Contiene tipos enumerativos y datos relacionados a las cadenas.
 typedef enum {
               OK,
               ERROR_NULL_POINTER,
-              ERROR_PROG_INVOCATION,
+              ERROR_NUMBER_OF_ARGS,
+	      ERROR_FORMAT_FLAG,
+	      ERROR_SORT_FLAG,
+	      ERROR_OUTPUT_PATH,
               ERROR_OUT_OF_MEMORY,
 	      ERROR_OPEN_INPUT_FILE,
 	      ERROR_OPEN_OUTPUT_FILE
