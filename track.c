@@ -207,3 +207,17 @@ int ADT_Track_compare_by_genre (const ADT_Track_t *a, const ADT_Track_t *b)
    return strcmp(genres_dictionary[a->genre],genres_dictionary[b->genre]);
 }
 /**************Final de función de comparacion de Tracks por género************/
+
+/****************************Funcion de impresion*****************************/
+
+status_t ADT_Track_export_as_CSV (const void * pv, char delimitter, FILE * fo)
+{
+	ADT_Track_t * track = (ADT_Track_t *) pv;
+
+	if(fo == NULL || pv == NULL)
+		return ERROR_NULL_POINTER;
+
+	fprintf(fo, "%s%c%s%c%s\n", track->title, delimitter,track->artist, delimitter, track->genre);
+
+	return OK;
+}
