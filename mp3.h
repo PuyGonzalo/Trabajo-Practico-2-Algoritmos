@@ -7,8 +7,8 @@ Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: mp3explorer.h
 Descripción: Contiene datos referidos a funciones de manejo de mp3.
 ************************************************************************/
-#ifndef MP3EXPLORER__H
-#define MP3EXPLORER__H
+#ifndef MP3__H
+#define MP3__H
 
 #include <stdio.h>
 #include "types.h"
