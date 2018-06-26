@@ -82,11 +82,19 @@ status_t process_mp3_files (char *input_files[])
 	  return ERROR_OPEN_INPUT_FILE;
 	}
 
-        if((st=ADT_Vector_export_as_CSV(vector, fo, CSV_DELIMITER, ADT_Track_export_as_CSV))!=OK)
+        switch(setup.fmt)  
 	{
- 	   fclose(fo);
-	   ADT_Vector_delete(&vector);	
-	   return st;
+	       case CSV:         if((st=ADT_Vector_export_as_CSV(vector, fo, CSV_DELIMITER, ADT_Track_export_as_CSV))!=OK)
+				{
+ 	                           fclose(fo);
+				   remove(setup.output_path);
+	 			   ADT_Vector_delete(&vector);	
+				   return st;
+				}break;	
+
+	       case XML:        {puts("en construccion");
+			         remove(setup.output_path);}
+			        break;
 	}	
 
 	if(fclose(fo)==EOF)
