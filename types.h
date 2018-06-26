@@ -19,7 +19,8 @@ typedef enum {
               ERROR_NULL_POINTER,
               ERROR_PROG_INVOCATION,
               ERROR_OUT_OF_MEMORY,
-	      ERROR_OPEN_INPUT_FILE
+	      ERROR_OPEN_INPUT_FILE,
+	      ERROR_OPEN_OUTPUT_FILE
              }status_t;
 
 
