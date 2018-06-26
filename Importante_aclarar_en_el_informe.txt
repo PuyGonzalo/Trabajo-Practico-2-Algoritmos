@@ -1,1 +1,1 @@
-- Aclarar lo del genero (byted, mask, etc.) (seccion problemas y resoluciones???)
+- Aclarar lo del genero (bytes, mask, etc.) (seccion problemas y resoluciones???)
