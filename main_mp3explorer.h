@@ -25,7 +25,7 @@ Descripción: Contiene datos relacionados a la validacion de argumentos.
 #define CMD_ARG_SORT_BY_NAME "name"
 #define CMD_ARG_SORT_BY_ARTIST "artist"
 #define CMD_ARG_SORT_BY_GENRE "genre"
-#define CMD_ARG_OUTPUT_FILE_FLAG "-out"
+#define CMD_ARG_OUTPUT_FILE_PATH "-out"
 #define CMD_ARG_POS_FIRST_INPUT_FILE 7
 
 	
