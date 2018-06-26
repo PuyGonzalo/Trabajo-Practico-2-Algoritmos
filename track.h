@@ -54,6 +54,7 @@ status_t ADT_Track_set_comment(ADT_Track_t *, string);
 int ADT_Track_compare_by_title (const ADT_Track_t *a, const ADT_Track_t *b);
 int ADT_Track_compare_by_artist (const ADT_Track_t *a, const ADT_Track_t *b);
 int ADT_Track_compare_by_genre (const ADT_Track_t *a, const ADT_Track_t *b);
+status_t ADT_Track_export_as_CSV (const void * pv, char delimitter, FILE * fo);
 /********************************PROTOTIPOS TDA MP3***********************************/
 
 #endif
