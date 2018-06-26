@@ -41,7 +41,7 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
            return ERROR_NULL_POINTER;
 
 	if(argc<MIN_ARGS) 
-	return ERROR_PROG_INVOCATION;
+	return ERROR_NUMBER_OF_ARGS;
 
 	for(i=0;i<argc;i++)
         {
@@ -55,7 +55,7 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
 	else if(!strcmp(argv[i+1],CMD_ARG_FORMAT_XML)) 
                 setup->fmt=XML;
 
-	else return ERROR_PROG_INVOCATION;
+	else return ERROR_FORMAT_FLAG;
 
 
 	for(i=0;i<argc;i++)
@@ -73,7 +73,7 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
 	else if(!strcmp(argv[i+1],CMD_ARG_SORT_BY_GENRE)) 
                 setup->sort=GENRE;
 
-	else return ERROR_PROG_INVOCATION;
+	else return ERROR_SORT_FLAG;
 
 
         for(i=0;i<argc;i++)
@@ -83,7 +83,7 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
         }
 
         if(argv[i+1]==NULL) 
-           return ERROR_PROG_INVOCATION;
+           return ERROR_OUTPUT_PATH;
 
         if((setup->output_path=strdupl(argv[i+1]))==NULL) 
            return ERROR_OUT_OF_MEMORY;
