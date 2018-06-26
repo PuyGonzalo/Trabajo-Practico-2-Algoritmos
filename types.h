@@ -17,6 +17,7 @@ Descripción: Contiene tipos enumerativos y datos relacionados a las cadenas.
 typedef enum {
               OK,
               ERROR_NULL_POINTER,
+	      ERROR_DISK_SPACE,
               ERROR_NUMBER_OF_ARGS,
 	      ERROR_FORMAT_FLAG,
 	      ERROR_SORT_FLAG,
