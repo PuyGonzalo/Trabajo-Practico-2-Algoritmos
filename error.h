@@ -14,8 +14,10 @@ Descripción: Contiene datos relacionados al diccionario de errores.
 #include <stdio.h>
 #include "types.h"
 
-status_t print_error (FILE * f, status_t st);
-
 #define MAX_ERRORS 10
 
+
+/****************PROTOTIPOS*********************/
+status_t print_error (FILE * f, status_t st);
+/****************PROTOTIPOS*********************/
 #endif
