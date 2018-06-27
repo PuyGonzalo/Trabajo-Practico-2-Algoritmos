@@ -24,10 +24,16 @@ int main (int argc, char *argv[])
 	status_t st;
         
 	if((st=validate_arguments(argc,argv,&setup))!=OK)
-           return st;
+	{
+		print_error(stderr,st);
+		return st;
+	}
 
 	if((st=process_mp3_files(argv+CMD_ARG_POS_FIRST_INPUT_FILE))!=OK)
-	   return st;
+	{
+		print_error(stderr,st);
+		return st;
+	}
 	
 	return OK;
 }
