@@ -1,1 +1,2 @@
 - Aclarar lo del genero (bytes, mask, etc.) (seccion problemas y resoluciones???)
+- No olvidar sacar genres.c
