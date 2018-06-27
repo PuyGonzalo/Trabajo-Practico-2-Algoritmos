@@ -153,53 +153,88 @@ status_t ADT_Track_delete(void **track)
 
 
 /**************Comiezo de función de comparacion de Tracks por título************/
-int ADT_Track_compare_by_title (const void *a, const void *b)
+int ADT_Track_compare_by_title (const void *pv1, const void *pv2)
 {
-   ADT_Track_t *track_a =(ADT_Track_t *)a;    
-   ADT_Track_t *track_b =(ADT_Track_t *)b;
+   ADT_Track_t *track_1 =(ADT_Track_t *)pv1;    
+   ADT_Track_t *track_2 =(ADT_Track_t *)pv2;
 
-   return strcmp(track_a->title,track_b->title);
+   return strcmp(track_1->title,track_2->title);
 }
 /**************Final de función de comparacion de Tracks por título************/
 
 
 
 /**************Comiezo de función de comparacion de Tracks por artista************/
-int ADT_Track_compare_by_artist (const void *a, const void *b)
+int ADT_Track_compare_by_artist (const void *pv1, const void *pv2)
 {
-   ADT_Track_t *track_a =(ADT_Track_t *)a;    
-   ADT_Track_t *track_b =(ADT_Track_t *)b;    
+   ADT_Track_t *track_1 =(ADT_Track_t *)pv1;    
+   ADT_Track_t *track_2 =(ADT_Track_t *)pv2;    
 
-   return strcmp(track_a->artist,track_b->artist);
+   return strcmp(track_1->artist,track_2->artist);
 }
 /**************Final de función de comparacion de Tracks por artista************/
 
 
 
-/**************Comiezo de función de comparacion de Tracks por género************/
-int ADT_Track_compare_by_genre (const void *a, const void *b)
+/*****************Comiezo de función de comparacion de Tracks por género***************/
+int ADT_Track_compare_by_genre (const void *pv1, const void *pv2)
 {
-   ADT_Track_t *track_a =(ADT_Track_t *)a;    
-   ADT_Track_t *track_b =(ADT_Track_t *)b;
+   ADT_Track_t *track_1 =(ADT_Track_t *)pv1;    
+   ADT_Track_t *track_2 =(ADT_Track_t *)pv2;
 
-   return strcmp(genres_dictionary[track_a->genre],genres_dictionary[track_b->genre]);
+   return strcmp(genres_dictionary[track_1->genre],genres_dictionary[track_2->genre]);
 }
-/**************Final de función de comparacion de Tracks por género************/
+/******************Final de función de comparacion de Tracks por género***************/
 
 
-/**************Comiezo de función de exportado de Tracks a CSV************/
-status_t ADT_Track_export_as_CSV (const void * pv, char delimitter, FILE * fo)
+/*****************Comiezo de función de exportado de Tracks a CSV***************/
+status_t ADT_Track_export_as_CSV (const void * pv, const void *delimitter, FILE * fo)
 {
 	ADT_Track_t *track=(ADT_Track_t *)pv;
 
 	if(fo==NULL || pv==NULL)
 	   return ERROR_NULL_POINTER;
 
-	fprintf(fo,"%s%c%s%c%s\n",track->title,delimitter,track->artist,delimitter,genres_dictionary[track->genre]);
+	fprintf(fo,"%s",track->title);
+	fprintf(fo,"%c",*((char *)delimitter));
+	fprintf(fo,"%s",track->artist);
+	fprintf(fo,"%c",*((char *)delimitter));
+	fprintf(fo,"%s\n",genres_dictionary[track->genre]);
 
 	return OK;
 }
-/**************Final de función de exportado de Tracks a CSV************/
+/******************Final de función de exportado de Tracks a CSV****************/
+
+
+
+/*****************Comiezo de función de exportado de Tracks a CSV***************/
+status_t ADT_Track_export_as_XML (const void * pv,const void *context, FILE * fo)
+{
+	ADT_Track_t *track=(ADT_Track_t *)pv;
+
+	if(fo==NULL || pv==NULL)
+	   return ERROR_NULL_POINTER;
+
+	fprintf(fo,"\t%c%s%c\n",'<',TRACK_TAG,'>');
+
+	fprintf(fo,"\t\t%c%s%c",'<',NAME_TAG,'>');
+	fprintf(fo,"%s",track->title);
+	fprintf(fo,"%s%s%c\n","</",NAME_TAG,'>');
+
+	fprintf(fo,"\t\t%c%s%c",'<',ARTIST_TAG,'>');
+	fprintf(fo,"%s",track->artist);
+	fprintf(fo,"%s%s%c\n","</",ARTIST_TAG,'>');
+
+
+	fprintf(fo,"\t\t%c%s%c",'<',GENRE_TAG,'>');
+	fprintf(fo,"%s",genres_dictionary[track->genre]);
+	fprintf(fo,"%s%s%c\n","</",GENRE_TAG,'>');
+
+	fprintf(fo,"\t%s%s%c\n","</",TRACK_TAG,'>');
+
+	return OK;
+}
+/******************Final de función de exportado de Tracks a CSV****************/
 
 
 

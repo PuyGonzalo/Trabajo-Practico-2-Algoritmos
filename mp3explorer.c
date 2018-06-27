@@ -26,7 +26,7 @@ status_t process_mp3_files (char *input_files[])
 	FILE* fi;
 	FILE* fo;
  	ADT_Vector_t *vector;
-	ADT_Track_t *track;
+	ADT_Track_t *track;	
 
 	if(input_files==NULL)
 	   return ERROR_NULL_POINTER;
@@ -87,13 +87,13 @@ status_t process_mp3_files (char *input_files[])
  
 	if((fo=fopen(setup.output_path,"wt"))==NULL)
 	{
-	  ADT_Vector_delete(&vector);
-	  return ERROR_OPEN_INPUT_FILE;
+	   ADT_Vector_delete(&vector);
+	   return ERROR_OPEN_INPUT_FILE;
 	}
 
         switch(setup.fmt)  
 	{
-	       case CSV:         if((st=ADT_Vector_export_as_CSV(vector, fo, CSV_DELIMITER, ADT_Track_export_as_CSV))!=OK)
+	       case CSV:        if((st=ADT_Vector_export_as_CSV(vector, fo, CSV_TRAKS_DELIMITER, ADT_Track_export_as_CSV))!=OK)
 				{
  	                           fclose(fo);
 				   remove(setup.output_path);
@@ -101,9 +101,13 @@ status_t process_mp3_files (char *input_files[])
 				   return st;
 				}break;	
 
-	       case XML:        {puts("en construccion");
-			         remove(setup.output_path);}
-			        break;
+	       case XML:        if((st=ADT_Vector_export_as_XML(vector, fo,TRACKS_TAG, ADT_Track_export_as_XML))!=OK)
+				{
+ 	                           fclose(fo);
+				   remove(setup.output_path);
+	 			   ADT_Vector_delete(&vector);	
+				   return st;
+				}break;
 
 	}
 

@@ -105,31 +105,6 @@ status_t ADT_Vector_append (ADT_Vector_t *v, void *new_element)
 
 
 
-/**************Comienzo de función de obtención de elemento***************/
-void * ADT_Vector_get_element (const ADT_Vector_t *v, size_t position)
-{
-	if(v==NULL) 
-           return NULL;
-
-	if(position>v->size) 
-           return NULL;
-
-        return v->element[position];
-}
-/***************Final de función de obtención de elemento****************/
-
-
-
-/**********Comienzo de función de obtención de tamaño de vector**********/
-size_t ADT_Vector_get_size (ADT_Vector_t *p)
-{
-   return p->size;
-}
-/*************Final de función de obtención de tamaño de vector**********/
-
-
-
-
 /**************Comienzo de función de ordenamieto de vector*************/
 status_t ADT_Vector_sort(ADT_Vector_t *v,compare_t pf)
 {
@@ -170,7 +145,7 @@ status_t ADT_Vector_swap_element(void **a,void**b)
 
 
 /***************************************Comienzo de función de exportado de vector a CSV**************************************************/
-status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimitter, printer_t pf)
+status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimiter, printer_t pf)
 {
 	size_t i;
 	status_t st;
@@ -180,7 +155,7 @@ status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimi
 
 	for(i=0;i<p->size;i++)
 	{
-            if((st=pf(p->element[i],delimitter,fo))!=OK)
+            if((st=pf(p->element[i],&delimiter,fo))!=OK)
 	       return st;
 	}
 
@@ -190,32 +165,26 @@ status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimi
 
 
 
-
-/********Las funciones ADT_Vector_Print( ) y ADT_Vector_set_printer( )no fueron utilizadas en el programa principal*************** 
-
-status_t ADT_Vector_Print (ADT_Vector_t *v, FILE *fo)
+/***************************************Comienzo de función de exportado de vector a XML**************************************************/
+status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string tag, printer_t pf)
 {
-	size_t i;
-        status_t st;
+        size_t i;
+	status_t st;
 
-	if(v==NULL || fo==NULL) 
+	if(p==NULL || fo==NULL)
 	   return ERROR_NULL_POINTER;
 
-        for(i=0;i<v->size;i++)
-            if((st=v->printer(v->element[i], fo))!=OK) 
-               return st;
- 
+	fprintf(fo,"%s\n",ADT_VECTOR_XML_HEADER);
+	fprintf(fo,"%c%s%c\n",'<',tag,'>');
+
+	for(i=0;i<p->size;i++)
+	{
+            if((st=pf(p->element[i],NULL,fo))!=OK)
+	       return st;
+	}
+
+	fprintf(fo,"%s%s%c\n","</",tag,'>');
+
         return OK;
 }
-
-status_t ADT_Vector_set_printer (ADT_Vector_t *v, Vector_printer_t pf)
-{
-   if (v==NULL || pf==NULL) 
-      return ERROR_NULL_POINTER;
-
-   v->printer=pf;
-
-   return OK;
-}
-********Las funciones ADT_Vector_Print( ) y ADT_Vector_set_printer( ) no fueron utilizadas en el programa principal***************/
-
+/***************************************Final de función de exportado de vector a XML**************************************************/

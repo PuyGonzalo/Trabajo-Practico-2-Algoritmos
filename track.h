@@ -23,6 +23,11 @@ Descripción: Contiene prototipos de primitivas y TDA Track.
 #define YEAR_FIELD_LENGHT     4
 #define COMMENT_FIELD_LENGHT 30
 
+#define TRACK_TAG "track"
+#define NAME_TAG "name"
+#define ARTIST_TAG "artist"
+#define GENRE_TAG "genre"
+
 typedef status_t (*Track_printer_t)(const void *, FILE* );
 
 typedef struct{
@@ -55,7 +60,8 @@ int ADT_Track_compare_by_title (const void *, const void *);
 int ADT_Track_compare_by_artist (const void *, const void *);
 int ADT_Track_compare_by_genre (const void *, const void *);
 
-status_t ADT_Track_export_as_CSV (const void *, char, FILE *);
+status_t ADT_Track_export_as_CSV (const void *, const void *, FILE *);
+status_t ADT_Track_export_as_XML (const void *, const void *, FILE *);
 /********************************PROTOTIPOS TDA MP3***********************************/
 
 #endif
