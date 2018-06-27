@@ -18,27 +18,23 @@ Descripción: Contiene funciones referidas a archivos mp3.
 
 
 /***********Comienzo de función de carga de tracks MP3 en vector**************/
-status_t load_track_mp3_on_vector (FILE *fi, ADT_Vector_t *p)
+status_t process_mp3_file (FILE *fi, ADT_Track_t **track)
 {
 	char header[MP3_HEADER_SIZE];
-	ADT_Track_t *track;
 	status_t st;
 
-	if(fi==NULL || p==NULL)
+	if(fi==NULL || track==NULL)
 	   return ERROR_NULL_POINTER;
 
 	if((st=get_mp3_header(fi,header))!=OK)
 	   return st;
 
-	if((st=set_track_from_mp3_header(header, &track))!= OK)
+	if((st=ADT_Track_new(track))!=OK)
+           return st;
+
+	if((st=set_track_from_mp3_header(header, *track))!=OK)
 	{
            ADT_Track_delete((void*)&track);
-	   return st;
-	}
-
-	if((st=ADT_Vector_append(p,track))!=OK)
-	{
-	   ADT_Track_delete((void*)&track);
 	   return st;
 	}
 
@@ -49,20 +45,20 @@ status_t load_track_mp3_on_vector (FILE *fi, ADT_Vector_t *p)
 
 
 /******Comienzo de función de obtencion de encabezado de track MP3******/
- status_t get_mp3_header (FILE * f, string header)
+ status_t get_mp3_header (FILE * fi, string header)
 {
 	size_t length;
 
-	if(f==NULL || header==NULL)
+	if(fi==NULL || header==NULL)
 	   return ERROR_NULL_POINTER;
 
-	fseek(f,0,SEEK_END);
+	fseek(fi,0,SEEK_END);
 
-	length=ftell(f);
+	length=ftell(fi);
 
-	fseek(f,length-MP3_HEADER_SIZE,SEEK_SET);
+	fseek(fi,length-MP3_HEADER_SIZE,SEEK_SET);
 
-	fread(header,sizeof(char),MP3_HEADER_SIZE,f);
+	fread(header,sizeof(char),MP3_HEADER_SIZE,fi);
 
 	return OK;
 }
@@ -71,51 +67,34 @@ status_t load_track_mp3_on_vector (FILE *fi, ADT_Vector_t *p)
 
 
 /************Comienzo de función de seteo de campos de track MP3**************/
-status_t set_track_from_mp3_header (const char header[], ADT_Track_t **track)
+status_t set_track_from_mp3_header (const string header, ADT_Track_t *track)
 {
-	char buf[MP3_HEADER_SIZE];
 	status_t st;
-	unsigned int n;
+	char aux[LEXEM_SPAN_GENRE];
 
-	if (header==NULL || track==NULL)
-	    return ERROR_NULL_POINTER;
+	if(header==NULL || track==NULL)
+	   return ERROR_NULL_POINTER;
 
-	if((st=ADT_Track_new(track))!=OK)
-           return st;
-
-	memcpy(buf,header+LEXEM_START_TAG,LEXEM_SPAN_TAG);
-	buf[LEXEM_SPAN_TAG] = '\0';
-	if((st=ADT_Track_set_tag(*track,buf))!=OK)
+	if((st=ADT_Track_set_tag(track,header+LEXEM_START_TAG))!=OK)
 	   return st;
 
-	memcpy(buf,header+LEXEM_START_TITLE,LEXEM_SPAN_TITLE);
-	buf[LEXEM_SPAN_TITLE] = '\0';
-	if((st=ADT_Track_set_title(*track,buf))!=OK)
+	if((st=ADT_Track_set_title(track,header+LEXEM_START_TITLE))!=OK)
 	   return st;
 
-	memcpy(buf,header+LEXEM_START_ARTIST,LEXEM_SPAN_ARTIST);
-	buf[LEXEM_SPAN_ARTIST] = '\0';
-	if((st=ADT_Track_set_artist(*track,buf))!=OK)
+	if((st=ADT_Track_set_artist(track,header+LEXEM_START_ARTIST))!=OK)
     	   return st;
 
-	memcpy(buf,header+LEXEM_START_ALBUM,LEXEM_SPAN_ALBUM);
-	buf[LEXEM_SPAN_ALBUM] = '\0';
-	if((st=ADT_Track_set_album(*track,buf))!=OK)
+	if((st=ADT_Track_set_album(track,header+LEXEM_START_ALBUM))!=OK)
            return st;
 
-	memcpy(buf,header+LEXEM_START_YEAR,LEXEM_SPAN_YEAR);
-	buf[LEXEM_SPAN_YEAR] = '\0';
-	if((st=ADT_Track_set_year(*track,buf))!=OK)
+	if((st=ADT_Track_set_year(track,header+LEXEM_START_YEAR))!=OK)
            return st;
 
-	memcpy(buf,header+LEXEM_START_COMMENT,LEXEM_SPAN_COMMENT);
-	buf[LEXEM_SPAN_COMMENT] = '\0';
-	if((st=ADT_Track_set_comment(*track,buf)) != OK)
+	if((st=ADT_Track_set_comment(track,header+LEXEM_START_COMMENT))!=OK)
     	   return st;
 
-	memcpy(&n,header+LEXEM_START_GENRE,LEXEM_SPAN_GENRE);
-	n=n&MASK_GENRE;
-	if((st=ADT_Track_set_genre(*track,n))!=OK)
+	memcpy(aux,header+LEXEM_START_GENRE,LEXEM_SPAN_GENRE);
+	if((st=ADT_Track_set_genre(track,aux[0]))!=OK)
      	   return st;
 
 	return OK;

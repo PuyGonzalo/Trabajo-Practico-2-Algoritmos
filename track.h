@@ -16,23 +16,23 @@ Descripción: Contiene prototipos de primitivas y TDA Track.
 #include <string.h>
 #include "types.h"
 
-#define LENGHT_TAG      3
-#define LENGHT_TITLE   30
-#define LENGHT_ARTIST  30
-#define LENGHT_ALBUM   30
-#define LENGHT_YEAR     4
-#define LENGHT_COMMENT 30
+#define TAG_FIELD_LENGHT      3
+#define TITLE_FIELD_LENGHT   30
+#define ARTIST_FIELD_LENGHT  30
+#define ALBUM_FIELD_LENGHT   30
+#define YEAR_FIELD_LENGHT     4
+#define COMMENT_FIELD_LENGHT 30
 
 typedef status_t (*Track_printer_t)(const void *, FILE* );
 
 typedef struct{
-	       char tag[LENGHT_TAG];
-   	       char title[LENGHT_TITLE]; 
-               char artist[LENGHT_ARTIST];
-               char album[LENGHT_ALBUM];
-               char year[LENGHT_YEAR];
+	       char tag[TAG_FIELD_LENGHT];
+   	       char title[TITLE_FIELD_LENGHT]; 
+               char artist[ARTIST_FIELD_LENGHT];
+               char album[ALBUM_FIELD_LENGHT];
+               char year[YEAR_FIELD_LENGHT];
                unsigned int genre;
-               char comment[LENGHT_COMMENT];
+               char comment[COMMENT_FIELD_LENGHT];
                Track_printer_t printer;
               }ADT_Track_t;
 
@@ -43,18 +43,19 @@ status_t ADT_Track_delete (void **);
 status_t ADT_Track_print (ADT_Track_t *,FILE *);
 status_t ADT_Track_set_printer (ADT_Track_t *, Track_printer_t );
 
-status_t ADT_Track_set_title (ADT_Track_t *, string);
-status_t ADT_Track_set_artist (ADT_Track_t *, string);
+status_t ADT_Track_set_title (ADT_Track_t *, const string);
+status_t ADT_Track_set_artist (ADT_Track_t *, const string);
 status_t ADT_Track_set_genre (ADT_Track_t *, unsigned int);
-status_t ADT_Track_set_album (ADT_Track_t *, string);
-status_t ADT_Track_set_year (ADT_Track_t *, string);
-status_t ADT_Track_set_tag (ADT_Track_t *, string);
-status_t ADT_Track_set_comment(ADT_Track_t *, string);
+status_t ADT_Track_set_album (ADT_Track_t *, const string);
+status_t ADT_Track_set_year (ADT_Track_t *, const string);
+status_t ADT_Track_set_tag (ADT_Track_t *, const string);
+status_t ADT_Track_set_comment(ADT_Track_t *, const string);
 
-int ADT_Track_compare_by_title (const ADT_Track_t *a, const ADT_Track_t *b);
-int ADT_Track_compare_by_artist (const ADT_Track_t *a, const ADT_Track_t *b);
-int ADT_Track_compare_by_genre (const ADT_Track_t *a, const ADT_Track_t *b);
-status_t ADT_Track_export_as_CSV (const void * pv, char delimitter, FILE * fo);
+int ADT_Track_compare_by_title (const void *, const void *);
+int ADT_Track_compare_by_artist (const void *, const void *);
+int ADT_Track_compare_by_genre (const void *, const void *);
+
+status_t ADT_Track_export_as_CSV (const void *, char, FILE *);
 /********************************PROTOTIPOS TDA MP3***********************************/
 
 #endif

@@ -26,6 +26,7 @@ status_t process_mp3_files (char *input_files[])
 	FILE* fi;
 	FILE* fo;
  	ADT_Vector_t *vector;
+	ADT_Track_t *track;
 
 	if(input_files==NULL)
 	   return ERROR_NULL_POINTER;
@@ -44,14 +45,22 @@ status_t process_mp3_files (char *input_files[])
 	       return ERROR_OPEN_INPUT_FILE;
             }
 	
-	    if((st=process_mp3_file(fi,vector))!=OK)
+	    if((st=process_mp3_file(fi,&track))!=OK)
             {
 	       ADT_Vector_delete(&vector);
 	       fclose(fi);
                return st;
             }
+	
+ 	    fclose(fi);
+	
+  	    if((st=ADT_Vector_append(vector,track))!=OK)
+	    {
+	       ADT_Vector_delete(&vector);
+	       ADT_Track_delete((void*)&track);
+	       return st;
+	    }
 
-	    fclose(fi);
 	}     
 
 	
@@ -95,7 +104,8 @@ status_t process_mp3_files (char *input_files[])
 	       case XML:        {puts("en construccion");
 			         remove(setup.output_path);}
 			        break;
-	}	
+
+	}
 
 	if(fclose(fo)==EOF)
 	{
