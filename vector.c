@@ -168,7 +168,31 @@ status_t ADT_Vector_swap_element(void **a,void**b)
 /*******************Final de función de cambio de elemento*******************/
 
 
-/**************Comienzo de función de impresión de vector****************/
+
+/***************************************Comienzo de función de exportado de vector a CSV**************************************************/
+status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimitter, printer_t pf)
+{
+	size_t i;
+	status_t st;
+
+	if(p==NULL || fo==NULL || pf==NULL)
+	   return ERROR_NULL_POINTER;
+
+	for(i=0;i<p->size;i++)
+	{
+            if((st=pf(p->element[i],delimitter,fo))!=OK)
+	       return st;
+	}
+
+	return OK;
+}
+/***************************************Final de función de exportado de vector a CSV**************************************************/
+
+
+
+
+/********Las funciones ADT_Vector_Print( ) y ADT_Vector_set_printer( )no fueron utilizadas en el programa principal*************** 
+
 status_t ADT_Vector_Print (ADT_Vector_t *v, FILE *fo)
 {
 	size_t i;
@@ -183,11 +207,7 @@ status_t ADT_Vector_Print (ADT_Vector_t *v, FILE *fo)
  
         return OK;
 }
-/*****************Final de función de impresión de vector*****************/
 
-
-
-/****************Comienzo de función de seteo de impresión de vector*****************/
 status_t ADT_Vector_set_printer (ADT_Vector_t *v, Vector_printer_t pf)
 {
    if (v==NULL || pf==NULL) 
@@ -197,25 +217,5 @@ status_t ADT_Vector_set_printer (ADT_Vector_t *v, Vector_printer_t pf)
 
    return OK;
 }
-/************Final de función de seteo de impresión de vector*************/
-
-
-/***************************************Comienzo de función de exportado de vector a CSV**************************************************/
-status_t ADT_Vector_export_as_CSV (const ADT_Vector_t * p, FILE * fo, char delimitter, status_t (*pf)(const void *, FILE *, char))
-{
-	size_t i;
-	status_t st;
-
-	if (p==NULL || fo==NULL || pf==NULL)
-		return ERROR_NULL_POINTER;
-
-	for (i=0;i<p->size;i++)
-	{
-		if((st=(*pf)(p->element[i],delimitter, fo))!=OK)
-	           return st;
-	}
-
-	return OK;
-}
-/***************************************Final de función de exportado de vector a CSV**************************************************/
+********Las funciones ADT_Vector_Print( ) y ADT_Vector_set_printer( ) no fueron utilizadas en el programa principal***************/
 
