@@ -16,6 +16,6 @@ Descripción: Contiene datos relacionados al diccionario de errores.
 
 status_t print_error (FILE * f, status_t st);
 
-#define MAX_ERRORS  /* FALTA AGREGAR EL NUMERO DE ERRORES FINAL */
+#define MAX_ERRORS 10
 
 #endif
