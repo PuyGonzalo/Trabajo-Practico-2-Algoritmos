@@ -1,12 +1,12 @@
-/*************************************************************
+/*******************************************************************
 Facultad de Ingeniería
 Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
-Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
-Archivo: errors.c
-Descripción: Contiene diccionario de errores.
-*************************************************************/
+Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Archivo: errors.h
+Descripción: Contiene datos relacionados al diccionario de errores.
+*******************************************************************/
 
 #ifndef ERROR__H
 #define ERROR__H
