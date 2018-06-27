@@ -1,12 +1,12 @@
-/**********************************************************************************
+/***********************************************************************
 Facultad de Ingeniería
 Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
-Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: main_mp3explorer.h
-Descripción: Contiene datos relacionados a la validacion de argumentos.
-*********************************************************************************/
+Descripción: Contiene datos relacionados a la validación de argumentos.
+************************************************************************/
 
 #ifndef MAIN_MP3EXPLORER__H
 #define MAIN_MP3EXPLORER__H
@@ -14,7 +14,6 @@ Descripción: Contiene datos relacionados a la validacion de argumentos.
 #include <stdio.h>
 #include "types.h"
 #include "setup.h"
-#include "vector.h"
 
 #define MIN_ARGS 8
 

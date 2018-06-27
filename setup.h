@@ -1,12 +1,12 @@
-/*********************************************************************************
+/************************************************************
 Facultad de Ingeniería
 Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
-Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: setup.h
-Descripción: Contiene datos relacionados a las estructuras utilizadas.
-**********************************************************************************/
+Descripción: Contiene datos relacionados a la configuración.
+************************************************************/
 
 #ifndef SETUP__H
 #define SETUP__H
@@ -16,8 +16,11 @@ Descripción: Contiene datos relacionados a las estructuras utilizadas.
 
 typedef struct {
                 export_t  fmt;
-                sort_t   sort;               
-                string   output_path;
+                sort_t    sort;               
+                size_t    output_path;
+	        size_t    input_path;
                }setup_t;
 
 #endif
+
+

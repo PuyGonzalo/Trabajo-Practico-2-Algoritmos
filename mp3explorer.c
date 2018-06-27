@@ -1,12 +1,12 @@
-/***********************************************************************
+/******************************************************************
 Facultad de Ingeniería
 Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
-Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: mp3explorer.c
-Descripción: Contiene funcion de procesamiento de archivos mp3.
-************************************************************************/
+Descripción: Contiene función de procesamiento de archivos mp3.
+******************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,9 +17,8 @@ Descripción: Contiene funcion de procesamiento de archivos mp3.
 #include "mp3.h"
 #include "setup.h"
 
-extern setup_t setup;
 
-status_t process_mp3_files (char *input_files[])
+status_t process_mp3_files (string files[], setup_t setup)
 {
 	status_t st;
 	size_t i;
@@ -28,7 +27,7 @@ status_t process_mp3_files (char *input_files[])
  	ADT_Vector_t *vector;
 	ADT_Track_t *track;	
 
-	if(input_files==NULL)
+	if(files==NULL)
 	   return ERROR_NULL_POINTER;
 
 	if((st=ADT_Vector_new(&vector))!=OK)
@@ -37,9 +36,9 @@ status_t process_mp3_files (char *input_files[])
 	if((st=ADT_Vector_set_destructor(vector,ADT_Track_delete))!=OK) 
            return st;	 		
 
-	for(i=0;input_files[i]!=NULL;i++)
+	for(i=setup.input_path;files[i]!=NULL;i++)
 	{
-	    if((fi=fopen(input_files[i],"rb"))==NULL)
+	    if((fi=fopen(files[i],"rb"))==NULL)
 	    {
 	       ADT_Vector_delete(&vector);
 	       return ERROR_OPEN_INPUT_FILE;
@@ -85,7 +84,7 @@ status_t process_mp3_files (char *input_files[])
 				 }break;
 	}
  
-	if((fo=fopen(setup.output_path,"wt"))==NULL)
+	if((fo=fopen(files[setup.output_path],"wt"))==NULL)
 	{
 	   ADT_Vector_delete(&vector);
 	   return ERROR_OPEN_INPUT_FILE;
@@ -96,15 +95,15 @@ status_t process_mp3_files (char *input_files[])
 	       case CSV:        if((st=ADT_Vector_export_as_CSV(vector, fo, CSV_TRAKS_DELIMITER, ADT_Track_export_as_CSV))!=OK)
 				{
  	                           fclose(fo);
-				   remove(setup.output_path);
+				   remove(files[setup.output_path]);
 	 			   ADT_Vector_delete(&vector);	
 				   return st;
 				}break;	
 
-	       case XML:        if((st=ADT_Vector_export_as_XML(vector, fo,TRACKS_TAG, ADT_Track_export_as_XML))!=OK)
+	       case XML:        if((st=ADT_Vector_export_as_XML(vector, fo,TRACKS_TAG,TRACKS_TAG, ADT_Track_export_as_XML))!=OK)
 				{
  	                           fclose(fo);
-				   remove(setup.output_path);
+				   remove(files[setup.output_path]);
 	 			   ADT_Vector_delete(&vector);	
 				   return st;
 				}break;

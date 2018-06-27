@@ -3,7 +3,7 @@ Facultad de Ingeniería
 Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
-Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: genres.h
 Descripción: Contiene datos relacionados con el diccionario de géneros musicales.
 **********************************************************************************/

@@ -1,12 +1,12 @@
-/***********************************************************************
+/*************************************************************
 Facultad de Ingeniería
 Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
-Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: mp3.c
 Descripción: Contiene funciones referidas a archivos mp3.
-************************************************************************/
+*************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +17,7 @@ Descripción: Contiene funciones referidas a archivos mp3.
 
 
 
-/***********Comienzo de función de carga de tracks MP3 en vector**************/
+/*******Comienzo de función de carga de tracks MP3 en vector********/
 status_t process_mp3_file (FILE *fi, ADT_Track_t **track)
 {
 	char header[MP3_HEADER_SIZE];
@@ -40,11 +40,11 @@ status_t process_mp3_file (FILE *fi, ADT_Track_t **track)
 
 	return OK;
 }
-/*************Final de función de carga de tracks MP3 en vector***************/
+/*********Final de función de carga de tracks MP3 en vector*********/
 
 
 
-/******Comienzo de función de obtencion de encabezado de track MP3******/
+/******Comienzo de función de obtencion de encabezado de track MP3*****/
  status_t get_mp3_header (FILE * fi, string header)
 {
 	size_t length;
@@ -62,7 +62,7 @@ status_t process_mp3_file (FILE *fi, ADT_Track_t **track)
 
 	return OK;
 }
-/********Final de función de obtencion de encabezado de track MP3********/
+/*******Final de función de obtencion de encabezado de track MP3*******/
 
 
 
@@ -99,4 +99,4 @@ status_t set_track_from_mp3_header (const string header, ADT_Track_t *track)
 
 	return OK;
 }
-/************Final de función de seteo de campos de track MP3**************/
+/**************Final de función de seteo de campos de track MP3***************/

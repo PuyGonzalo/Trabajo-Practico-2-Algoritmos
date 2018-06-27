@@ -1,12 +1,12 @@
-/***********************************************************************
+/**************************************************************
 Facultad de Ingeniería
 Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
-Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: vector.h
 Descripción: Contiene prototipos de primitivas y TDA Vector.
-************************************************************************/
+*************************************************************/
 
 
 #ifndef VECTOR__H
@@ -15,7 +15,6 @@ Descripción: Contiene prototipos de primitivas y TDA Vector.
 #include <stdlib.h>
 #include <string.h>
 #include "types.h"
-
 
 #define ADT_VECTOR_INIT_CHOP 30
 
@@ -33,7 +32,7 @@ typedef struct{
                destructor_t destructor;
               }ADT_Vector_t;
 
-/*****************************PROTOTIPOS TDA VECTOR******************************/
+/**************************************PROTOTIPOS TDA VECTOR*******************************************/
 status_t ADT_Vector_new (ADT_Vector_t **);
 status_t ADT_Vector_delete (ADT_Vector_t **);
 status_t ADT_Vector_set_destructor (ADT_Vector_t *, destructor_t);
@@ -41,7 +40,7 @@ status_t ADT_Vector_append (ADT_Vector_t *, void *);
 status_t ADT_Vector_sort(ADT_Vector_t *v,compare_t);
 status_t ADT_Vector_swap_element(void **,void **);
 status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *, FILE *, char, printer_t);
-status_t ADT_Vector_export_as_XML(const ADT_Vector_t *, FILE *fo,const string , printer_t );
-/******************************PROTOTIPOS TDA VECTOR******************************/
+status_t ADT_Vector_export_as_XML(const ADT_Vector_t *, FILE *,const string ,const string, printer_t );
+/*************************************PROTOTIPOS TDA VECTOR********************************************/
 
 #endif

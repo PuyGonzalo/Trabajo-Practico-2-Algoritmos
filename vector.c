@@ -1,22 +1,21 @@
-/***********************************************************************
+/*********************************************************
 Facultad de Ingeniería
 Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
-Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: vector.c
 Descripción: Contiene funciones de manejo de TDA Vector.
-************************************************************************/
+*********************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "vector.h"
-#include "types.h"
-#include "vector.h"
+#include "types.h"	
 
 
-/**************Comienzo de función de creacion de vector*****************/
+/***********************Comienzo de función de creación de vector*********************/
 status_t ADT_Vector_new (ADT_Vector_t **p)
 {
 	if(p==NULL) 
@@ -37,11 +36,11 @@ status_t ADT_Vector_new (ADT_Vector_t **p)
 
 	return OK;
 }
-/****************Final de función de creacion de vector*****************/
+/***********************Final de función de creación de vector*************************/
 
 
 
-/*************Comienzo de función de destrucción de vector**************/
+/*****Comienzo de función de destrucción de vector******/
 status_t ADT_Vector_delete (ADT_Vector_t **p)
 {
 	size_t i;
@@ -63,11 +62,11 @@ status_t ADT_Vector_delete (ADT_Vector_t **p)
 
 	return OK;
 }
-/***************Final de función de destrucción de vector*****************/
+/******Final de función de destrucción de vector*******/
 
 
 
-/**********Comienzo de función de seteo de destructor de vector***********/
+/********Comienzo de función de seteo de destructor de vector*********/
 status_t ADT_Vector_set_destructor (ADT_Vector_t *p, destructor_t pf)
 {
    if(p==NULL || pf==NULL) 
@@ -77,11 +76,11 @@ status_t ADT_Vector_set_destructor (ADT_Vector_t *p, destructor_t pf)
 
    return OK;
 }
-/***********Final de función de seteo de destructor de vector*************/
+/**********Final de función de seteo de destructor de vector**********/
 
 
 
-/*******************Comienzo de función de adjunción de vector**********************/
+/********************************Comienzo de función de adjunción de vector********************************/
 status_t ADT_Vector_append (ADT_Vector_t *v, void *new_element)
 {
    void **aux;
@@ -101,7 +100,7 @@ status_t ADT_Vector_append (ADT_Vector_t *v, void *new_element)
 	
    return OK;
 }
-/*********************Final de función de adjunción de vector**********************/
+/********************************Final de función de adjunción de vector***********************************/
 
 
 
@@ -129,22 +128,22 @@ status_t ADT_Vector_sort(ADT_Vector_t *v,compare_t pf)
 
 
 
-/*******************Comienzo de función de cambio de elemento*******************/
-status_t ADT_Vector_swap_element(void **a,void**b)
+/*******************Comienzo de función de cambio de elemento de vector*******************/
+status_t ADT_Vector_swap_element(void **element_a,void**element_b)
 {
 	void *aux;
  
- 	aux=*a;
-	*a=*b;
-        *b=aux;  
+ 	aux=*element_a;
+	*element_a=*element_b;
+        *element_b=aux;  
 
 	return OK;
 }
-/*******************Final de función de cambio de elemento*******************/
+/********************Final de función de cambio de elemento de vector********************/
 
 
 
-/***************************************Comienzo de función de exportado de vector a CSV**************************************************/
+/*********************Comienzo de función de exportado de vector a CSV*******************************/
 status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimiter, printer_t pf)
 {
 	size_t i;
@@ -161,12 +160,12 @@ status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimi
 
 	return OK;
 }
-/***************************************Final de función de exportado de vector a CSV**************************************************/
+/**************************Final de función de exportado de vector a CSV*****************************/
 
 
 
-/***************************************Comienzo de función de exportado de vector a XML**************************************************/
-status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string tag, printer_t pf)
+/*******************************Comienzo de función de exportado de vector a XML****************************************/
+status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string header,const string footer, printer_t pf)
 {
         size_t i;
 	status_t st;
@@ -175,7 +174,7 @@ status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string t
 	   return ERROR_NULL_POINTER;
 
 	fprintf(fo,"%s\n",ADT_VECTOR_XML_HEADER);
-	fprintf(fo,"%c%s%c\n",'<',tag,'>');
+	fprintf(fo,"%c%s%c\n",'<',header,'>');
 
 	for(i=0;i<p->size;i++)
 	{
@@ -183,8 +182,8 @@ status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string t
 	       return st;
 	}
 
-	fprintf(fo,"%s%s%c\n","</",tag,'>');
+	fprintf(fo,"%s%s%c\n","</",footer,'>');
 
         return OK;
 }
-/***************************************Final de función de exportado de vector a XML**************************************************/
+/***********************************Final de función de exportado de vector a XML***************************************/

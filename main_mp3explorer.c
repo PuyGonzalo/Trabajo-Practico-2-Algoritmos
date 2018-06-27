@@ -1,19 +1,18 @@
-/***********************************************************************
+/******************************************************
 Facultad de Ingeniería
 Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
-Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
 Archivo: main_mp3explorer.c
 Descripción: Programa principal.
-************************************************************************/
+******************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "main_mp3explorer.h"
 #include "mp3explorer.h"
-#include "utilities.h"
 #include "types.h"
 #include "error.h"
 
@@ -30,7 +29,7 @@ int main (int argc, char *argv[])
 		return st;
 	}
 
-	if((st=process_mp3_files(argv+CMD_ARG_POS_FIRST_INPUT_FILE))!=OK)
+	if((st=process_mp3_files(argv,setup))!=OK)
 	{
 		print_error(stderr,st);
 		return st;
@@ -101,8 +100,9 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
         if(argv[i+1]==NULL) 
            return ERROR_OUTPUT_PATH;
 
-        if((setup->output_path=strdupl(argv[i+1]))==NULL) 
-           return ERROR_OUT_OF_MEMORY;
+        setup->output_path=i+1;
+
+	setup->input_path=CMD_ARG_POS_FIRST_INPUT_FILE; 
 
    	return OK;
 }
