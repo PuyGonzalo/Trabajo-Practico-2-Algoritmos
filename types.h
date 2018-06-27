@@ -27,7 +27,7 @@ typedef enum {
 	      ERROR_OUTPUT_PATH=9,
               ERROR_OUT_OF_MEMORY=10,
 	      ERROR_OPEN_INPUT_FILE=11,
-	      ERROR_OPEN_OUTPUT_FILE=12,
+	      ERROR_OPEN_OUTPUT_FILE=12
              }status_t;
 
 
