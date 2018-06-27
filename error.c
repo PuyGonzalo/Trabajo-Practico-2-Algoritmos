@@ -26,6 +26,8 @@ static char * error_dictionary[MAX_ERRORS]=
 		"Fallo al abrir archivo de salida",
 };
 
+
+/*****Comienzo de función de impresión de mensaje de error******/
 status_t print_error (FILE * f, status_t st)
 {
 	if(stream == NULL)
@@ -35,3 +37,4 @@ status_t print_error (FILE * f, status_t st)
 
 	return OK;
 }
+/*****Final de función de impresión de mensaje de error******/
