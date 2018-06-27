@@ -26,7 +26,7 @@ int main (int argc, char *argv[])
 	if((st=validate_arguments(argc,argv,&setup))!=OK)
            return st;
 
-	if((st=process_tracks(argv+CMD_ARG_POS_FIRST_INPUT_FILE))!=OK)
+	if((st=process_mp3_files(argv+CMD_ARG_POS_FIRST_INPUT_FILE))!=OK)
 	   return st;
 	
 	return OK;
@@ -78,7 +78,7 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
 
         for(i=0;i<argc;i++)
         {
-            if(!strcmp(argv[i],CMD_ARG_OUTPUT_FILE_FLAG)) 
+            if(!strcmp(argv[i],CMD_ARG_OUTPUT_FILE_PATH)) 
                break;
         }
 
