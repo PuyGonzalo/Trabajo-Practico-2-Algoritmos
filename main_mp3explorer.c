@@ -55,6 +55,9 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
 	    if(!strcmp(argv[i],CMD_ARG_FORMAT_FLAG)) 
 	       break;
         }
+
+	if(i==argc)
+	   return ERROR_FORMAT_FLAG;
    
         if(!strcmp(argv[i+1],CMD_ARG_FORMAT_CSV)) 
             setup->fmt=CSV;
@@ -62,7 +65,7 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
 	else if(!strcmp(argv[i+1],CMD_ARG_FORMAT_XML)) 
                 setup->fmt=XML;
 
-	else return ERROR_FORMAT_FLAG;
+	else return ERROR_INVALID_FORMAT;
 
 
 	for(i=0;i<argc;i++)
@@ -70,6 +73,9 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
 	    if(!strcmp(argv[i],CMD_ARG_SORT_FLAG)) 
                break;
         }
+
+	if(i==argc)
+	   return ERROR_SORT_FLAG;
 
         if(!strcmp(argv[i+1],CMD_ARG_SORT_BY_NAME)) 
            setup->sort=NAME;
@@ -80,14 +86,17 @@ status_t validate_arguments (int argc, char *argv[], setup_t *setup)
 	else if(!strcmp(argv[i+1],CMD_ARG_SORT_BY_GENRE)) 
                 setup->sort=GENRE;
 
-	else return ERROR_SORT_FLAG;
+	else return ERROR_INVALID_SORT;
 
 
         for(i=0;i<argc;i++)
         {
-            if(!strcmp(argv[i],CMD_ARG_OUTPUT_FILE_PATH)) 
+            if(!strcmp(argv[i],CMD_ARG_OUTPUT_PATH_FLAG)) 
                break;
         }
+
+	if(i==argc)
+	   return ERROR_OUTPUT_PATH_FLAG;
 
         if(argv[i+1]==NULL) 
            return ERROR_OUTPUT_PATH;
