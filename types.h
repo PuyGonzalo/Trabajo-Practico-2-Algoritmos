@@ -15,19 +15,19 @@ Descripción: Contiene tipos enumerativos y datos relacionados a las cadenas.
 #include <stdio.h>
 
 typedef enum {
-              OK,
-              ERROR_NULL_POINTER,
-	      ERROR_DISK_SPACE,
-              ERROR_NUMBER_OF_ARGS,
-	      ERROR_FORMAT_FLAG,
-              ERROR_INVALID_FORMAT,
-	      ERROR_SORT_FLAG,
-	      ERROR_INVALID_SORT,
-	      ERROR_OUTPUT_PATH_FLAG,
-	      ERROR_OUTPUT_PATH,
-              ERROR_OUT_OF_MEMORY,
-	      ERROR_OPEN_INPUT_FILE,
-	      ERROR_OPEN_OUTPUT_FILE,
+              OK=0,
+              ERROR_NULL_POINTER=1,
+	      ERROR_DISK_SPACE=2,
+              ERROR_NUMBER_OF_ARGS=3,
+	      ERROR_FORMAT_FLAG=4,
+              ERROR_INVALID_FORMAT=5,
+	      ERROR_SORT_FLAG=6,
+	      ERROR_INVALID_SORT=7,
+	      ERROR_OUTPUT_PATH_FLAG=8,
+	      ERROR_OUTPUT_PATH=9,
+              ERROR_OUT_OF_MEMORY=10,
+	      ERROR_OPEN_INPUT_FILE=11,
+	      ERROR_OPEN_OUTPUT_FILE=12,
              }status_t;
 
 
