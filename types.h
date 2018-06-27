@@ -21,12 +21,13 @@ typedef enum {
               ERROR_NUMBER_OF_ARGS,
 	      ERROR_FORMAT_FLAG,
               ERROR_INVALID_FORMAT,
+	      ERROR_SORT_FLAG,
 	      ERROR_INVALID_SORT,
 	      ERROR_OUTPUT_PATH_FLAG,
 	      ERROR_OUTPUT_PATH,
               ERROR_OUT_OF_MEMORY,
 	      ERROR_OPEN_INPUT_FILE,
-	      ERROR_OPEN_OUTPUT_FILE
+	      ERROR_OPEN_OUTPUT_FILE,
              }status_t;
 
 

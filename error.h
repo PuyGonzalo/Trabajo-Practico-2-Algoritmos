@@ -14,7 +14,7 @@ Descripción: Contiene datos relacionados al diccionario de errores.
 #include <stdio.h>
 #include "types.h"
 
-#define MAX_ERRORS 10
+#define MAX_ERRORS 13
 
 
 /****************PROTOTIPOS*********************/
