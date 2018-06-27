@@ -201,7 +201,7 @@ status_t ADT_Vector_set_printer (ADT_Vector_t *v, Vector_printer_t pf)
 
 
 /***************************************Comienzo de función de exportado de vector a CSV**************************************************/
-/*status_t ADT_Vector_export_as_CSV (const ADT_Vector_t * p, FILE * fo, char delimitter, status_t (*pf)(const void *, FILE *, char))
+status_t ADT_Vector_export_as_CSV (const ADT_Vector_t * p, FILE * fo, char delimitter, status_t (*pf)(const void *, FILE *, char))
 {
 	size_t i;
 	status_t st;
@@ -216,6 +216,6 @@ status_t ADT_Vector_set_printer (ADT_Vector_t *v, Vector_printer_t pf)
 	}
 
 	return OK;
-}*/
+}
 /***************************************Final de función de exportado de vector a CSV**************************************************/
 
