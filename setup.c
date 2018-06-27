@@ -13,3 +13,5 @@ Descripción: Contine configuracion de programa.
 #include "types.h"
 
 setup_t setup;
+
+

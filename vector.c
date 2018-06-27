@@ -12,8 +12,7 @@ Descripción: Contiene funciones de manejo de TDA Vector.
 #include <stdlib.h>
 #include <string.h>
 #include "vector.h"
-#include "types.h"
-#include "vector.h"
+#include "types.h"	
 
 
 /**************Comienzo de función de creacion de vector*****************/
@@ -130,13 +129,13 @@ status_t ADT_Vector_sort(ADT_Vector_t *v,compare_t pf)
 
 
 /*******************Comienzo de función de cambio de elemento*******************/
-status_t ADT_Vector_swap_element(void **a,void**b)
+status_t ADT_Vector_swap_element(void **element_a,void**element_b)
 {
 	void *aux;
  
- 	aux=*a;
-	*a=*b;
-        *b=aux;  
+ 	aux=*element_a;
+	*element_a=*element_b;
+        *element_b=aux;  
 
 	return OK;
 }
@@ -166,7 +165,7 @@ status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimi
 
 
 /***************************************Comienzo de función de exportado de vector a XML**************************************************/
-status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string tag, printer_t pf)
+status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string header,const string footer, printer_t pf)
 {
         size_t i;
 	status_t st;
@@ -175,7 +174,7 @@ status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string t
 	   return ERROR_NULL_POINTER;
 
 	fprintf(fo,"%s\n",ADT_VECTOR_XML_HEADER);
-	fprintf(fo,"%c%s%c\n",'<',tag,'>');
+	fprintf(fo,"%c%s%c\n",'<',header,'>');
 
 	for(i=0;i<p->size;i++)
 	{
@@ -183,7 +182,7 @@ status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string t
 	       return st;
 	}
 
-	fprintf(fo,"%s%s%c\n","</",tag,'>');
+	fprintf(fo,"%s%s%c\n","</",footer,'>');
 
         return OK;
 }

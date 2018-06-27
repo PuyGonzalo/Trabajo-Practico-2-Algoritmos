@@ -12,12 +12,13 @@ Descripción: Contiene datos referidos a funciones de procesamiento de mp3.
 
 #include <stdio.h>
 #include "types.h"
+#include "setup.h"
 
 #define TRACKS_TAG "tracks"
 #define CSV_TRAKS_DELIMITER '|'
 
 /**********************************PROTOTYPES***********************************/
-status_t process_mp3_files (char *[]);
+status_t process_mp3_files (string[], setup_t);
 /**********************************PROTOTYPES***********************************/
 
 #endif

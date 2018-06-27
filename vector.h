@@ -33,7 +33,7 @@ typedef struct{
                destructor_t destructor;
               }ADT_Vector_t;
 
-/*****************************PROTOTIPOS TDA VECTOR******************************/
+/**************************************PROTOTIPOS TDA VECTOR*******************************************/
 status_t ADT_Vector_new (ADT_Vector_t **);
 status_t ADT_Vector_delete (ADT_Vector_t **);
 status_t ADT_Vector_set_destructor (ADT_Vector_t *, destructor_t);
@@ -41,7 +41,7 @@ status_t ADT_Vector_append (ADT_Vector_t *, void *);
 status_t ADT_Vector_sort(ADT_Vector_t *v,compare_t);
 status_t ADT_Vector_swap_element(void **,void **);
 status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *, FILE *, char, printer_t);
-status_t ADT_Vector_export_as_XML(const ADT_Vector_t *, FILE *fo,const string , printer_t );
-/******************************PROTOTIPOS TDA VECTOR******************************/
+status_t ADT_Vector_export_as_XML(const ADT_Vector_t *, FILE *,const string ,const string, printer_t );
+/*************************************PROTOTIPOS TDA VECTOR********************************************/
 
 #endif

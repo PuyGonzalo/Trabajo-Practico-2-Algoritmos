@@ -13,7 +13,6 @@ Descripción: Contiene datos referidos a funciones de manejo de mp3.
 #include <stdio.h>
 #include "types.h"
 #include "track.h"
-#include "vector.h"
 
 #define MP3_HEADER_SIZE	  128
 

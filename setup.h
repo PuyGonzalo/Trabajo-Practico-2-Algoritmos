@@ -16,8 +16,11 @@ Descripción: Contiene datos relacionados a las estructuras utilizadas.
 
 typedef struct {
                 export_t  fmt;
-                sort_t   sort;               
-                string   output_path;
+                sort_t    sort;               
+                size_t    output_path;
+	        size_t    input_path;
                }setup_t;
 
 #endif
+
+

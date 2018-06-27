@@ -215,27 +215,30 @@ status_t ADT_Track_export_as_XML (const void * pv,const void *context, FILE * fo
 	if(fo==NULL || pv==NULL)
 	   return ERROR_NULL_POINTER;
 
-	fprintf(fo,"\t%c%s%c\n",'<',TRACK_TAG,'>');
+	fprintf(fo,"\t%c%s%c\n",'<',XML_LABEL_TRACK,'>');
 
-	fprintf(fo,"\t\t%c%s%c",'<',NAME_TAG,'>');
+	fprintf(fo,"\t\t%c%s%c",'<',XML_LABEL_NAME,'>');
 	fprintf(fo,"%s",track->title);
-	fprintf(fo,"%s%s%c\n","</",NAME_TAG,'>');
+	fprintf(fo,"%s%s%c\n","</",XML_LABEL_NAME,'>');
 
-	fprintf(fo,"\t\t%c%s%c",'<',ARTIST_TAG,'>');
+	fprintf(fo,"\t\t%c%s%c",'<',XML_LABEL_ARTIST,'>');
 	fprintf(fo,"%s",track->artist);
-	fprintf(fo,"%s%s%c\n","</",ARTIST_TAG,'>');
+	fprintf(fo,"%s%s%c\n","</",XML_LABEL_ARTIST,'>');
 
 
-	fprintf(fo,"\t\t%c%s%c",'<',GENRE_TAG,'>');
+	fprintf(fo,"\t\t%c%s%c",'<',XML_LABEL_GENRE,'>');
 	fprintf(fo,"%s",genres_dictionary[track->genre]);
-	fprintf(fo,"%s%s%c\n","</",GENRE_TAG,'>');
+	fprintf(fo,"%s%s%c\n","</",XML_LABEL_GENRE,'>');
 
-	fprintf(fo,"\t%s%s%c\n","</",TRACK_TAG,'>');
+	fprintf(fo,"\t%s%s%c\n","</",XML_LABEL_TRACK,'>');
 
 	return OK;
 }
 /******************Final de función de exportado de Tracks a CSV****************/
 
+
+
+/***Las siguientes funciones no fueron implementadas en el programa****/
 
 
 /**************Comienzo de función de impresión de Track*****************/

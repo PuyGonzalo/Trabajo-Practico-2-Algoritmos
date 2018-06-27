@@ -14,7 +14,6 @@ Descripción: Contiene datos relacionados a la validacion de argumentos.
 #include <stdio.h>
 #include "types.h"
 #include "setup.h"
-#include "vector.h"
 
 #define MIN_ARGS 8
 

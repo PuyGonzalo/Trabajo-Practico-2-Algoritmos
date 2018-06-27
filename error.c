@@ -21,7 +21,7 @@ static char * error_dictionary[MAX_ERRORS]=
 		"Bandera de formato incorrecta",
 	        "Formato invalido",
 		"Bandera de ordenamiento incorrecta",
-		"Ordenamiento incorrecta",
+		"Criterio de ordenamiento incorrecto",
 		"Bandera de ruta de salida incorrecta",
 		"Ruta de ruta de salida incorrecta",
 		"Error memoria",
