@@ -1,3 +1,13 @@
+/*************************************************************
+Facultad de Ingeniería
+Universidad de Buenos Aires
+Algoritmos y programacion I (95.11)
+Profesor: Ing. Martín Cardozo
+Alumno: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Archivo: errors.c
+Descripción: Contiene diccionario de errores.
+*************************************************************/
+
 #include <stdio.h>
 #include "error.h"
 #include "types.h"
