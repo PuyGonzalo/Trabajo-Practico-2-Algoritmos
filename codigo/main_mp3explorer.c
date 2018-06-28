@@ -14,7 +14,7 @@ Descripción: Programa principal.
 #include "main_mp3explorer.h"
 #include "mp3explorer.h"
 #include "types.h"
-#include "error.h"
+#include "errors.h"
 
 
 extern setup_t setup;

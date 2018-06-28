@@ -13,7 +13,9 @@ Descripción: Contiene funciones de manejo de TDA Track.
 #include <string.h>
 #include "track.h"
 #include "types.h"
-#include "genres.c"
+#include "genres.h"
+
+extern string genres_dictionary[MAX_GENRES];
 
 
 /**************Comienzo de función de creación de Track***************/
