@@ -33,13 +33,13 @@ typedef status_t (*Track_printer_t)(const void *, FILE* );
 typedef struct{
 	       char tag[TAG_FIELD_LENGHT];
    	       char title[TITLE_FIELD_LENGHT]; 
-           char artist[ARTIST_FIELD_LENGHT];
-           char album[ALBUM_FIELD_LENGHT];
-           char year[YEAR_FIELD_LENGHT];
-           unsigned int genre;
-           char comment[COMMENT_FIELD_LENGHT];
-           Track_printer_t printer;
-           }ADT_Track_t;
+               char artist[ARTIST_FIELD_LENGHT];
+               char album[ALBUM_FIELD_LENGHT];
+               char year[YEAR_FIELD_LENGHT];
+               unsigned int genre;
+               char comment[COMMENT_FIELD_LENGHT];
+               Track_printer_t printer;
+              }ADT_Track_t;
 
 /************************PROTOTIPOS TDA TRACK*************************/
 status_t ADT_Track_new (ADT_Track_t **);

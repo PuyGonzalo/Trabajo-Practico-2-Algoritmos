@@ -15,11 +15,11 @@ Descripción: Contiene datos relacionados a la configuración.
 #include "types.h"
 
 typedef struct {
-            export_t  fmt;
-            sort_t    sort;               
-            size_t    output_path;
+                export_t  fmt;
+                sort_t    sort;               
+                size_t    output_path;
 	        size_t    input_path;
-            }setup_t;
+               }setup_t;
 
 #endif
 

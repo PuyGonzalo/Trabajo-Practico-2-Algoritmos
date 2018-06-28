@@ -65,23 +65,23 @@ status_t process_mp3_files (string files[], setup_t setup)
 	
 	switch(setup.sort)
  	{
-	      case NAME:if((st=ADT_Vector_sort(vector,ADT_Track_compare_by_title))!=OK)
-				 	{   
-                    	ADT_Vector_delete(&vector);
-				    	return st;
-				 	}break;
+	      case NAME:   	 if((st=ADT_Vector_sort(vector,ADT_Track_compare_by_title))!=OK)
+				 {   
+                                    ADT_Vector_delete(&vector);
+				    return st;
+				 }break;
 		
-	      case ARTIST:if((st=ADT_Vector_sort(vector,ADT_Track_compare_by_artist))!=OK)
-				 	  {   
-                      		ADT_Vector_delete(&vector);
-				    		return st;
-				 	  }break;
+	      case ARTIST:       if((st=ADT_Vector_sort(vector,ADT_Track_compare_by_artist))!=OK)
+				 {   
+                                    ADT_Vector_delete(&vector);
+				    return st;
+				 }break;
 
-	      case GENRE:if((st=ADT_Vector_sort(vector,ADT_Track_compare_by_genre))!=OK)
-				 	 {   
-                        ADT_Vector_delete(&vector);
-				    	return st;
-				 	 }break;
+	      case GENRE:        if((st=ADT_Vector_sort(vector,ADT_Track_compare_by_genre))!=OK)
+				 {   
+                                    ADT_Vector_delete(&vector);
+				    return st;
+				 }break;
 	}
  
 	if((fo=fopen(files[setup.output_path],"wt"))==NULL)
@@ -90,34 +90,34 @@ status_t process_mp3_files (string files[], setup_t setup)
 	   return ERROR_OPEN_INPUT_FILE;
 	}
 
-    switch(setup.fmt)  
+        switch(setup.fmt)  
 	{
-	    case CSV:if((st=ADT_Vector_export_as_CSV(vector, fo, CSV_TRAKS_DELIMITER, ADT_Track_export_as_CSV))!=OK)
-				 {
- 	               fclose(fo);
+	       case CSV:        if((st=ADT_Vector_export_as_CSV(vector, fo, CSV_TRAKS_DELIMITER, ADT_Track_export_as_CSV))!=OK)
+				{
+ 	                           fclose(fo);
 				   remove(files[setup.output_path]);
 	 			   ADT_Vector_delete(&vector);	
 				   return st;
-				 }break;	
+				}break;	
 
-	    case XML:if((st=ADT_Vector_export_as_XML(vector, fo,TRACKS_TAG,TRACKS_TAG, ADT_Track_export_as_XML))!=OK)
-				 {
- 	               fclose(fo);
+	       case XML:        if((st=ADT_Vector_export_as_XML(vector, fo,TRACKS_TAG,TRACKS_TAG, ADT_Track_export_as_XML))!=OK)
+				{
+ 	                           fclose(fo);
 				   remove(files[setup.output_path]);
 	 			   ADT_Vector_delete(&vector);	
 				   return st;
-				 }break;
+				}break;
 
 	}
 
 	if(fclose(fo)==EOF)
 	{
-        ADT_Vector_delete(&vector);	
+           ADT_Vector_delete(&vector);	
 	   return ERROR_DISK_SPACE;
 	}
 
-    if((st=ADT_Vector_delete(&vector))!=OK)
-        return st;
+        if((st=ADT_Vector_delete(&vector))!=OK)
+           return st;
 
  	return OK;
 }

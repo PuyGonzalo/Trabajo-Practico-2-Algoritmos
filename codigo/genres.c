@@ -11,7 +11,7 @@ Descripción: Contiene diccionario de géneros musicales.
 #include "genres.h"
 
 string  genres_dictionary[MAX_GENRES]={
-			   	    "Blues",
+			   	        "Blues",
 					"Classic Rock",
 					"Country",
 					"Dance",

@@ -22,8 +22,8 @@ status_t ADT_Track_new(ADT_Track_t **track)
 	if(track==NULL) 
 	   return ERROR_NULL_POINTER;
 
-    if((*track=(ADT_Track_t *)malloc(sizeof(ADT_Track_t)))==NULL) 
-        return ERROR_OUT_OF_MEMORY;
+        if((*track=(ADT_Track_t *)malloc(sizeof(ADT_Track_t)))==NULL) 
+           return ERROR_OUT_OF_MEMORY;
 
 	return OK;
 }
@@ -39,7 +39,7 @@ status_t ADT_Track_delete(void **track)
 	   return ERROR_NULL_POINTER; 
 
 	free(*track);
-    *track=NULL; 
+        *track=NULL; 
 
 	return OK;
 }
@@ -55,7 +55,7 @@ status_t ADT_Track_set_title(ADT_Track_t *track, const string new_title)
 
 	strcpy(track->title,new_title);
  	track->title[TITLE_FIELD_LENGHT]='\0';
-    return OK;
+        return OK;
 }
 /*************Final de función de seteo de título de Track**************/
 

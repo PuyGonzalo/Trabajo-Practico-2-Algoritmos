@@ -19,7 +19,7 @@ static char * error_dictionary[MAX_ERRORS]=
 		"Espacio en disco insuficiente",
 		"Numero de argumentos invalido",
 		"Bandera de formato incorrecta",
-	    "Formato invalido",
+	        "Formato invalido",
 		"Bandera de criterio de ordenamiento incorrecta",
 		"Criterio de ordenamiento incorrecto",
 		"Bandera de ruta de salida incorrecta",

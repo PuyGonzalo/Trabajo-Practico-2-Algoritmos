@@ -48,17 +48,17 @@ status_t ADT_Vector_delete (ADT_Vector_t **p)
 	if(p==NULL)
 	   return ERROR_NULL_POINTER;
 
-    for(i=0; i<(*p)->size; i++)
-    {
-        (*p)->destructor(&((*p)->element[i])); 
-        (*p)->element[i]=NULL;
-    }
+        for(i=0; i<(*p)->size; i++)
+        {
+            (*p)->destructor(&((*p)->element[i])); 
+            (*p)->element[i]=NULL;
+        }
 
-    free((*p)->element);
+        free((*p)->element);
 	(*p)->element=NULL;
 
-    free(*p);
-    *p=NULL;
+        free(*p);
+        *p=NULL;
 
 	return OK;
 }
@@ -114,13 +114,13 @@ status_t ADT_Vector_sort(ADT_Vector_t *v,compare_t pf)
 	   return ERROR_NULL_POINTER;
 
 	for(i=0;i<v->size-1;i++)
-    {
+        {
 	    for(j=0;j<(v->size-1)-i;j++)
 	    {
 	        if(pf(v->element[j],v->element[j+1])>0)    
                    ADT_Vector_swap_element(&(v->element[j]),&(v->element[j+1]));
+            }
         }
-    }
 
 	return OK;
 }
@@ -135,7 +135,7 @@ status_t ADT_Vector_swap_element(void **element_a,void**element_b)
  
  	aux=*element_a;
 	*element_a=*element_b;
-    *element_b=aux;  
+        *element_b=aux;  
 
 	return OK;
 }
@@ -154,8 +154,8 @@ status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimi
 
 	for(i=0;i<p->size;i++)
 	{
-        if((st=pf(p->element[i],&delimiter,fo))!=OK)
-		    return st;
+            if((st=pf(p->element[i],&delimiter,fo))!=OK)
+	       return st;
 	}
 
 	return OK;
@@ -178,12 +178,12 @@ status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string h
 
 	for(i=0;i<p->size;i++)
 	{
-        if((st=pf(p->element[i],NULL,fo))!=OK)
+            if((st=pf(p->element[i],NULL,fo))!=OK)
 	       return st;
 	}
 
 	fprintf(fo,"%s%s%c\n","</",footer,'>');
 
-    return OK;
+        return OK;
 }
 /***********************************Final de función de exportado de vector a XML***************************************/
