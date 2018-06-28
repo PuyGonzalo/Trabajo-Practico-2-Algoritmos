@@ -34,6 +34,9 @@ errors.o: errors.c errors.h types.h
 
 setup.o: setup.c setup.h types.h
 	$(CC) $(CFLAGS) -c setup.c -o setup.o
+	
+genres.o: genres.c genres.h
+	$(CC) $(CFLAGS) -c genres.c -o genres.o
 
 clean:
 	rm *.o
