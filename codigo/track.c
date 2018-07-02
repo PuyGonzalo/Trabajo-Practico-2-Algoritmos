@@ -18,6 +18,17 @@ Descripción: Contiene funciones de manejo de TDA Track.
 extern string genres_dictionary[MAX_GENRES];
 
 
+int (*compare[MAX_COMPARE])(const void*, const void*)= {
+							ADT_Track_compare_by_title,
+							ADT_Track_compare_by_artist,
+							ADT_Track_compare_by_genre
+						       };
+
+status_t (*track_export[MAX_EXPORT])(const void *, FILE *)= { 
+						             ADT_Track_export_as_CSV,
+						             ADT_Track_export_as_XML 							
+						            };
+
 /**************Comienzo de función de creación de Track***************/
 status_t ADT_Track_new(ADT_Track_t **track)
 {
@@ -189,7 +200,7 @@ int ADT_Track_compare_by_genre (const void *pv1, const void *pv2)
 
 
 /*********************Comienzo de función de exportado de Tracks a CSV*****************/
-status_t ADT_Track_export_as_CSV (const void * pv, const void *delimitter, FILE * fo)
+status_t ADT_Track_export_as_CSV (const void * pv, FILE * fo)
 {
 	ADT_Track_t *track=(ADT_Track_t *)pv;
 
@@ -197,9 +208,9 @@ status_t ADT_Track_export_as_CSV (const void * pv, const void *delimitter, FILE 
 	   return ERROR_NULL_POINTER;
 
 	fprintf(fo,"%s",track->title);
-	fprintf(fo,"%c",*((char *)delimitter));
+	fprintf(fo,"%c",CSV_DELIMITER);
 	fprintf(fo,"%s",track->artist);
-	fprintf(fo,"%c",*((char *)delimitter));
+	fprintf(fo,"%c",CSV_DELIMITER);
 	fprintf(fo,"%s\n",genres_dictionary[track->genre]);
 
 	return OK;
@@ -209,7 +220,7 @@ status_t ADT_Track_export_as_CSV (const void * pv, const void *delimitter, FILE 
 
 
 /******************Comiezo de función de exportado de Tracks a XML****************/
-status_t ADT_Track_export_as_XML (const void * pv,const void *context, FILE * fo)
+status_t ADT_Track_export_as_XML (const void * pv, FILE * fo)
 {
 	ADT_Track_t *track=(ADT_Track_t *)pv;
 
@@ -236,37 +247,3 @@ status_t ADT_Track_export_as_XML (const void * pv,const void *context, FILE * fo
 	return OK;
 }
 /******************Final de función de exportado de Tracks a XML****************/
-
-
-
-/***Las siguientes funciones no fueron implementadas en el programa****/
-
-
-/******Comienzo de función de impresión de Track**********/
-status_t ADT_Track_print(ADT_Track_t *track, FILE *fo)
-{
-	status_t st;
-
-	if(track==NULL || fo==NULL) 
-	   return ERROR_NULL_POINTER;
-
-	if((st=track->printer(track,fo))!=OK) 
-           return st;
-
-	return OK;
-}
-/********Final de función de impresión de Track**********/
-
-
-
-/********Comienzo de función de seteo de impresión de Track*************/
-status_t ADT_Track_set_printer(ADT_Track_t *track, Track_printer_t pf)
-{
-	if(track==NULL || pf==NULL) 
-           return ERROR_NULL_POINTER;
-
-	track->printer = pf;
-
-	return OK;
-}
-/********Final de función de seteo de impresión de Track****************/

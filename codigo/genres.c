@@ -4,6 +4,7 @@ Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
 Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
+Archivo: genres.c
 Descripción: Contiene diccionario de géneros musicales.
 *********************************************************/
 

@@ -34,7 +34,7 @@ typedef enum {
 typedef enum{
              CSV,
              XML
-            }export_t;
+            }format_t;
 
 typedef enum{
              NAME,

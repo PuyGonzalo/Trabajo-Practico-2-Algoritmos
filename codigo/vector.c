@@ -143,8 +143,8 @@ status_t ADT_Vector_swap_element(void **element_a,void**element_b)
 
 
 
-/*********************Comienzo de función de exportado de vector a CSV*******************************/
-status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimiter, printer_t pf)
+/*********************Comienzo de función de exportado de vector*******************************/
+status_t ADT_Vector_export (const ADT_Vector_t *p, FILE * fo, printer_t pf)
 {
 	size_t i;
 	status_t st;
@@ -154,36 +154,10 @@ status_t ADT_Vector_export_as_CSV (const ADT_Vector_t *p, FILE * fo, char delimi
 
 	for(i=0;i<p->size;i++)
 	{
-            if((st=pf(p->element[i],&delimiter,fo))!=OK)
+            if((st=pf(p->element[i],fo))!=OK)
 	       return st;
 	}
 
 	return OK;
 }
-/**************************Final de función de exportado de vector a CSV*****************************/
-
-
-
-/*******************************Comienzo de función de exportado de vector a XML****************************************/
-status_t ADT_Vector_export_as_XML(const ADT_Vector_t *p, FILE *fo,const string header,const string footer, printer_t pf)
-{
-        size_t i;
-	status_t st;
-
-	if(p==NULL || fo==NULL)
-	   return ERROR_NULL_POINTER;
-
-	fprintf(fo,"%s\n",ADT_VECTOR_XML_HEADER);
-	fprintf(fo,"%c%s%c\n",'<',header,'>');
-
-	for(i=0;i<p->size;i++)
-	{
-            if((st=pf(p->element[i],NULL,fo))!=OK)
-	       return st;
-	}
-
-	fprintf(fo,"%s%s%c\n","</",footer,'>');
-
-        return OK;
-}
-/***********************************Final de función de exportado de vector a XML***************************************/
+/**************************Final de función de exportado de vector*****************************/

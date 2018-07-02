@@ -4,7 +4,7 @@ Universidad de Buenos Aires
 Algoritmos y programacion I (95.11)
 Profesor: Ing. Martín Cardozo
 Alumnos: Puy, Gonzalo - Reigada, Maximiliano Daniel
-Archivo: mp3explorer.h
+Archivo: mp3.h
 Descripción: Contiene datos referidos a funciones de manejo de mp3.
 ************************************************************************/
 #ifndef MP3__H

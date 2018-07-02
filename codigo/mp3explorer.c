@@ -16,7 +16,9 @@ Descripción: Contiene función de procesamiento de archivos mp3.
 #include "mp3explorer.h"
 #include "mp3.h"
 #include "setup.h"
+#include "track_print.h"
 
+extern int (*compare[MAX_COMPARE])(const void*, const void*);
 
 status_t process_mp3_files (string files[], setup_t setup)
 {
@@ -63,26 +65,12 @@ status_t process_mp3_files (string files[], setup_t setup)
 	}     
 
 	
-	switch(setup.sort)
- 	{
-	      case NAME:   	 if((st=ADT_Vector_sort(vector,ADT_Track_compare_by_title))!=OK)
-				 {   
-                                    ADT_Vector_delete(&vector);
-				    return st;
-				 }break;
-		
-	      case ARTIST:       if((st=ADT_Vector_sort(vector,ADT_Track_compare_by_artist))!=OK)
-				 {   
-                                    ADT_Vector_delete(&vector);
-				    return st;
-				 }break;
-
-	      case GENRE:        if((st=ADT_Vector_sort(vector,ADT_Track_compare_by_genre))!=OK)
-				 {   
-                                    ADT_Vector_delete(&vector);
-				    return st;
-				 }break;
-	}
+	if((st=ADT_Vector_sort(vector,compare[setup.sort]))!=OK)
+        {   
+            ADT_Vector_delete(&vector);
+            return st;
+        }
+	
  
 	if((fo=fopen(files[setup.output_path],"wt"))==NULL)
 	{
@@ -90,25 +78,13 @@ status_t process_mp3_files (string files[], setup_t setup)
 	   return ERROR_OPEN_INPUT_FILE;
 	}
 
-        switch(setup.fmt)  
+	if((st=print_tracks(vector,setup.fmt,fo))!=OK)
 	{
-	       case CSV:        if((st=ADT_Vector_export_as_CSV(vector, fo, CSV_TRAKS_DELIMITER, ADT_Track_export_as_CSV))!=OK)
-				{
- 	                           fclose(fo);
-				   remove(files[setup.output_path]);
-	 			   ADT_Vector_delete(&vector);	
-				   return st;
-				}break;	
-
-	       case XML:        if((st=ADT_Vector_export_as_XML(vector, fo,TRACKS_TAG,TRACKS_TAG, ADT_Track_export_as_XML))!=OK)
-				{
- 	                           fclose(fo);
-				   remove(files[setup.output_path]);
-	 			   ADT_Vector_delete(&vector);	
-				   return st;
-				}break;
-
-	}
+ 	   fclose(fo);
+	   remove(files[setup.output_path]);
+	   ADT_Vector_delete(&vector);	
+	   return st;
+	}	
 
 	if(fclose(fo)==EOF)
 	{
