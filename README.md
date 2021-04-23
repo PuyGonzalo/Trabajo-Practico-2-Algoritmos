@@ -19,4 +19,5 @@ ordenado de acuerdo a un criterio particular y presentado en formato texto
 
 
 ### xml que devuelve
-![XML que devuelve](https://github.com/PuyGonzalo/Trabajo-Practico-2-Algoritmos/blob/master/Informe/xml_1.png)
+![XML que devuelve 1](https://github.com/PuyGonzalo/Trabajo-Practico-2-Algoritmos/blob/master/Informe/xml_1.png)
+![XML que devuelve 2](https://github.com/PuyGonzalo/Trabajo-Practico-2-Algoritmos/blob/master/Informe/xml_2.png)
