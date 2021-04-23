@@ -11,8 +11,12 @@ ordenado de acuerdo a un criterio particular y presentado en formato texto
 
 ## Capturas de Pantalla
 
+### Ejecución del programa
 ![Ejecución del programa](https://github.com/PuyGonzalo/Trabajo-Practico-2-Algoritmos/blob/master/Informe/correcto.png)
 
+### .csv que devuelve
 ![.CSV que devuelve](https://github.com/PuyGonzalo/Trabajo-Practico-2-Algoritmos/blob/master/Informe/ej_prueba_CSV.png)
 
+
+### xml que devuelve
 ![XML que devuelve](https://github.com/PuyGonzalo/Trabajo-Practico-2-Algoritmos/blob/master/Informe/xml_1.png)
