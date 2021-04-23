@@ -1,5 +1,7 @@
 # Trabajo-Practico-2-Algoritmos
 Trabajo Practico N.° 2  para la materia Algoritmos y programacion I (95.11).
+
+
 Para mas información, consultar el archivo "INFORME.pdf".
 
 ## Objetivos
