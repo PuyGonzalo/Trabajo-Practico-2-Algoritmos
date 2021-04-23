@@ -11,8 +11,8 @@ ordenado de acuerdo a un criterio particular y presentado en formato texto
 
 ## Capturas de Pantalla
 
-[Ejecución del programa](https://www.overleaf.com/project/5c903231c370b972bbd33069/file/5c903232c370b972bbd3306f)
+![Ejecución del programa](https://github.com/PuyGonzalo/Trabajo-Practico-2-Algoritmos/blob/master/Informe/correcto.png)
 
-[.CSV que devuelve](https://www.overleaf.com/project/5c903231c370b972bbd33069/file/5c903232c370b972bbd33070)
+![.CSV que devuelve](https://github.com/PuyGonzalo/Trabajo-Practico-2-Algoritmos/blob/master/Informe/ej_prueba_CSV.png)
 
-[XML que devuelve](https://www.overleaf.com/project/5c903231c370b972bbd33069/file/5c903232c370b972bbd33075)
+![XML que devuelve](https://github.com/PuyGonzalo/Trabajo-Practico-2-Algoritmos/blob/master/Informe/xml_1.png)
